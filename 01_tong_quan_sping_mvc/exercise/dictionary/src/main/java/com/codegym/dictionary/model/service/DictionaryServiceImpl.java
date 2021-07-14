@@ -10,7 +10,8 @@ import java.util.Map;
 @Service
 public class DictionaryServiceImpl implements DictionaryService{
     @Autowired
-    DictionaryRepositoryImpl dictionaryRepository;
+    DictionaryRepository dictionaryRepository;
+
     @Override
     public Map<String, String> findAll() {
         return dictionaryRepository.findAll();

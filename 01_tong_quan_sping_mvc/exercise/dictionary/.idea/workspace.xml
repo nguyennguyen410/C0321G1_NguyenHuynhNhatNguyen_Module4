@@ -20,36 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a182350-7286-4410-ae88-9b51279bf5b2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../convert_currency/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../convert_currency/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../convert_currency/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../convert_currency/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../convert_currency/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../convert_currency/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../convert_currency/src/main/java/com/codegym/convert_currency/ConvertCurrencyController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../convert_currency/src/main/webapp/WEB-INF/applicationContext.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../convert_currency/src/main/webapp/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../convert_currency/src/main/webapp/WEB-INF/views/value.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../convert_currency/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/codegym/dictionary/controller/DictionaryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/codegym/dictionary/model/repository/DictionaryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/codegym/dictionary/model/repository/DictionaryRepositoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/codegym/dictionary/model/service/DictionaryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/codegym/dictionary/model/service/DictionaryServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/value.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../practice/th_tao_spring_greeting/.idea/modules/th_tao_spring_greeting.main.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../practice/th_tao_spring_greeting/src/main/webapp/WEB-INF/applicationContext.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../practice/th_tao_spring_greeting/src/main/webapp/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../practice/th_tao_spring_greeting/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/codegym/dictionary/controller/DictionaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codegym/dictionary/controller/DictionaryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/codegym/dictionary/model/service/DictionaryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codegym/dictionary/model/service/DictionaryServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +166,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1626252103322</updated>
-      <workItem from="1626252108167" duration="2765000" />
+      <workItem from="1626252108167" duration="3894000" />
     </task>
     <servers />
   </component>
