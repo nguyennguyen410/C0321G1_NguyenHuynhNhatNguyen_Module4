@@ -20,11 +20,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a182350-7286-4410-ae88-9b51279bf5b2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../convert_currency/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../convert_currency/src/main/java/com/codegym/convert_currency/model/service/CurrencyConvertService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../convert_currency/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../convert_currency/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../convert_currency/src/main/java/com/codegym/convert_currency/ConvertCurrencyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../convert_currency/src/main/java/com/codegym/convert_currency/controller/ConvertCurrencyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/spices_/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/spices_/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/spices_/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/spices_/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/spices_/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/spices_/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/spices_/src/main/java/com/codegym/spices_for_sandwich/controller/SpicesSandwichController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/spices_/src/main/java/com/codegym/spices_for_sandwich/model/service/SpicesSandwichService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/spices_/src/main/java/com/codegym/spices_for_sandwich/model/service/SpicesSandwichServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/spices_/src/main/webapp/WEB-INF/applicationContext.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/spices_/src/main/webapp/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/spices_/src/main/webapp/WEB-INF/views/display.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/spices_/src/main/webapp/WEB-INF/views/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/spices_/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../02_spring_controller/practice/check_email_application/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../02_spring_controller/practice/check_email_application/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../02_spring_controller/practice/check_email_application/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../02_spring_controller/practice/check_email_application/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../02_spring_controller/practice/check_email_application/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../02_spring_controller/practice/check_email_application/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../02_spring_controller/practice/check_email_application/src/main/java/com/codegym/controller/EmailController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../02_spring_controller/practice/check_email_application/src/main/webapp/WEB-INF/applicationContext.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../02_spring_controller/practice/check_email_application/src/main/webapp/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../02_spring_controller/practice/check_email_application/src/main/webapp/WEB-INF/views/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../02_spring_controller/practice/check_email_application/src/main/webapp/WEB-INF/views/success.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../02_spring_controller/practice/check_email_application/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../02_spring_controller/practice/time_city/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../02_spring_controller/practice/time_city/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../02_spring_controller/practice/time_city/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../02_spring_controller/practice/time_city/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../02_spring_controller/practice/time_city/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../02_spring_controller/practice/time_city/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../02_spring_controller/practice/time_city/src/main/java/com/codegym/time_city/TimeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../02_spring_controller/practice/time_city/src/main/webapp/WEB-INF/applicationContext.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../02_spring_controller/practice/time_city/src/main/webapp/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../02_spring_controller/practice/time_city/src/main/webapp/WEB-INF/views/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../02_spring_controller/practice/time_city/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -170,7 +202,8 @@
       <option name="presentableId" value="Default" />
       <updated>1626252103322</updated>
       <workItem from="1626252108167" duration="4122000" />
-      <workItem from="1626270748592" duration="362000" />
+      <workItem from="1626270748592" duration="2996000" />
+      <workItem from="1626315079306" duration="4562000" />
     </task>
     <servers />
   </component>
@@ -202,10 +235,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="268" y="337" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.824@0.0.1536.824" timestamp="1626252268475" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1626270775289">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1626317304236">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1626270775289" />
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1626317304236" />
     <state width="1024" height="210" key="GridCell.Tab.0.bottom" timestamp="1626257753316">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -254,5 +287,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1024" height="210" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1626257753316" />
+    <state x="209" y="23" key="new project wizard" timestamp="1626317408336">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="209" y="23" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1626317408336" />
   </component>
 </project>
