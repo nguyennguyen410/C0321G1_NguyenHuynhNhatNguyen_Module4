@@ -22,9 +22,13 @@ public class SpicesSandwichController {
     }
 
     @GetMapping("/save")
-    public String save(@RequestParam("spices") String[] spices, Model model) {
-        List<String> list = spicesSandwichService.displaySpices(spices);
-        model.addAttribute("list", list);
+    public String save(@RequestParam(value = "spices", required = false) String[] spices, Model model) {
+        if(spices==null){
+            model.addAttribute("message", "No Spices");
+        } else {
+            List<String> list = spicesSandwichService.displaySpices(spices);
+            model.addAttribute("list", list);
+        }
         return "/display";
     }
 }

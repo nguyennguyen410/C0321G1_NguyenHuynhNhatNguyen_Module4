@@ -14,7 +14,7 @@
 <fieldset>
     <legend>Sandwich</legend>
     <label>Spices choosed: </label>
-    <p>${list}</p>
+    <p>${list}${message}</p>
 </fieldset>
 </body>
 </html>
