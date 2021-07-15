@@ -21,15 +21,15 @@ public class CalculatorSimpleController {
 
 
     @GetMapping("/result")
-    public String save(@RequestParam("textA") float textA,
-                       @RequestParam("textB") float textB,
+    public String save(@RequestParam("firstParameter") float firstParameter,
+                       @RequestParam("secondParameter") float secondParameter,
                        @RequestParam("operator") String operator,
                        Model model) {
 
-        float result = calculatorSimpleService.calculator(textA,textB,operator);
+        float result = calculatorSimpleService.calculator(firstParameter,secondParameter,operator);
         model.addAttribute("result", result);
-        model.addAttribute("textA", textA);
-        model.addAttribute("textB", textB);
+        model.addAttribute("firstParameter", firstParameter);
+        model.addAttribute("secondParameter", secondParameter);
         return "/result";
     }
 }

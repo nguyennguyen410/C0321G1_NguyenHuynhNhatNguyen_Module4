@@ -6,20 +6,20 @@ import org.springframework.stereotype.Service;
 public class CalculatorSimpleServiceImpl implements CalculatorSimpleService {
 
     @Override
-    public float calculator(float textA, float textB, String operator) {
+    public float calculator(float firstParameter, float secondParameter, String operator) {
         float result;
         switch (operator) {
             case ("Addition(+)"):
-                result = textA + textB;
+                result = firstParameter + secondParameter;
                 break;
             case ("Subtraction(-)"):
-                result = textA - textB;
+                result = firstParameter - secondParameter;
                 break;
             case ("Multiplication(*)"):
-                result = textA * textB;
+                result = firstParameter * secondParameter;
                 break;
             case ("Division(/)"):
-                result = textA / textB;
+                result = firstParameter / secondParameter;
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + operator);

@@ -15,8 +15,8 @@
     <fieldset>
         <legend>Calculator Simple</legend>
         <label>Input: </label>
-        <input type="text" id="textA" name="textA">
-        <input type="text" id="textB" name="textB">
+        <input type="text" id="firstParameter" name="firstParameter">
+        <input type="text" id="secondParameter" name="secondParameter">
 
         <div id="buttons" style="margin-top: 10px">
             <input id="addition" name="operator" type="submit" tabindex="5"
