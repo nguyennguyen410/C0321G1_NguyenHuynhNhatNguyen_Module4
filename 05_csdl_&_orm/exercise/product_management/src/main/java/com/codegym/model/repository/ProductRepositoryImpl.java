@@ -18,7 +18,7 @@ import java.util.Map;
 
 
 @Repository
-public class ProductRepositoryImpl implements ProductRepository{
+public class ProductRepositoryImpl implements ProductRepository {
 
     private static SessionFactory sessionFactory;
     private static EntityManager entityManager;
@@ -50,12 +50,12 @@ public class ProductRepositoryImpl implements ProductRepository{
             transaction = session.beginTransaction();
             session.save(product);
             transaction.commit();
-        } catch (Exception e){
-            if(transaction!=null){
+        } catch (Exception e) {
+            if (transaction != null) {
                 transaction.rollback();
             }
         } finally {
-            if(session!=null){
+            if (session != null) {
                 session.close();
             }
         }
@@ -68,18 +68,19 @@ public class ProductRepositoryImpl implements ProductRepository{
 
     @Override
     public void update(Product product) {
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
         entityManager.merge(product);
+        transaction.commit();
     }
 
     @Override
     public void remove(int id) {
-        Product product;
-        String queryStr = "SELECT c FROM Product AS c WHERE c.id = :id";
-        TypedQuery<Product> query = entityManager.createQuery(queryStr, Product.class);
-        query.setParameter("id", id);
-        product =  query.getSingleResult();
-
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
+        Product product = entityManager.find(Product.class, id);
         entityManager.remove(product);
+        transaction.commit();
     }
 
     @Override
