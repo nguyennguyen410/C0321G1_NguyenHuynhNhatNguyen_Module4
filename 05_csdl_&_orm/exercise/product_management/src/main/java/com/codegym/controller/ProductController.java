@@ -41,10 +41,10 @@ public class ProductController {
     }
 
     @GetMapping("/{id}/edit")
-    public String edit(@PathVariable int id, Model model) {
-        model.addAttribute("product", productService.findById(id));
-        return "/edit";
-    }
+        public String edit(@PathVariable int id, Model model) {
+            model.addAttribute("product", productService.findById(id));
+            return "/edit";
+        }
 
     @PostMapping("/update")
     public String update(Product product) {
