@@ -87,8 +87,8 @@ public class BlogController {
         return "/view";
     }
 
-    @PostMapping("/search")
-    public ModelAndView search(@RequestParam("search") String name, @RequestParam("category") Long id, @PageableDefault(value = 3, sort = "dateCreate", direction = Sort.Direction.DESC) Pageable pageable) {
+    @GetMapping("/search")
+    public ModelAndView search(@RequestParam("search") String name, @RequestParam("category") Long id, @PageableDefault(value = 5, sort = "dateCreate", direction = Sort.Direction.DESC) Pageable pageable) {
         /*return new ModelAndView("/search-list","blogList",blogService.findAllByNameContaining(name,pageable));*/
         if(name.equals("")){
             /*Category categories = categoryService.findById(id);*/
@@ -102,7 +102,25 @@ public class BlogController {
             modelAndView.addObject("blogList", blogs);
             return modelAndView;
         }
-
     }
 
+    /*@GetMapping("/search1")
+    public ModelAndView showList1(@PageableDefault(value = 3, sort = "dateCreate", direction = Sort.Direction.DESC) Pageable pageable) {
+        Page<Blog> blogs = blogService.findAll(pageable);
+        ModelAndView modelAndView = new ModelAndView("/search-list");
+        modelAndView.addObject("blogList", blogs);
+        List<Category> categoryList = categoryService.findAll();
+        modelAndView.addObject("categorys", categoryList);
+        return modelAndView;
+    }
+
+    @GetMapping("/search2")
+    public ModelAndView showList2(@PageableDefault(value = 3, sort = "dateCreate", direction = Sort.Direction.DESC) Pageable pageable) {
+        Page<Blog> blogs = blogService.findAll(pageable);
+        ModelAndView modelAndView = new ModelAndView("/search-list");
+        modelAndView.addObject("blogList", blogs);
+        List<Category> categoryList = categoryService.findAll();
+        modelAndView.addObject("categorys", categoryList);
+        return modelAndView;
+    }*/
 }

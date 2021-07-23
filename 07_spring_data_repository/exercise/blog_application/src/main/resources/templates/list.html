@@ -5,7 +5,7 @@
 <a href="/blog/create">Create new blog</a>
 <h1>Blog</h1>
 <div>
-    <form action="/blog/search" method="post">
+    <form action="/blog/search" method="get">
         <input type="text" name="search">
         <div>
             <label>Category:</label>
@@ -19,6 +19,7 @@
 
 <table border="1" id="product">
     <tr>
+        <th>No</th>
         <th>ID</th>
         <th>Blog name</th>
         <th>Category</th>
@@ -27,8 +28,9 @@
         <th>Delete</th>
         <th>View</th>
     </tr>
-    <th:block th:each="blog : ${blogList}">
+    <th:block th:each="blog, status : ${blogList}">
         <tr>
+            <td th:text="${status.count}"></td>
             <td th:text="${blog.id}"></td>
             <td th:text="${blog.name}"></td>
             <td th:text="${blog.category.name}"></td>
