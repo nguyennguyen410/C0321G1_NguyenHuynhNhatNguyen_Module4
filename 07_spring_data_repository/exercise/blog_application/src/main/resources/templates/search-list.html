@@ -29,11 +29,11 @@
         </tr>
     </th:block>
 </table>
-<!--<div>
-    <a th:href="@{'/blog/search1'(page=${blogList.number - 1})}" th:if="${blogList.hasPrevious()}">Previous</a>
+<div>
+    <a th:href="@{'/blog/searchPre'(page=${blogList.number - 1}, id=${idCategory})}" th:if="${blogList.hasPrevious()}">Previous</a>
     <span th:text="${blogList.number + 1}"></span>/<span th:text="${blogList.totalPages}"></span>
-    <a th:href="@{'/blog/search2'(page=${blogList.number + 1})}" th:if="${blogList.hasNext()}">Next</a>
-</div>-->
+    <a th:href="@{'/blog/searchNext'(page=${blogList.number + 1}, id=${idCategory})}" th:if="${blogList.hasNext()}">Next</a>
+</div>
 <footer th:replace="/layout :: footer"></footer>
 </body>
 </html>
