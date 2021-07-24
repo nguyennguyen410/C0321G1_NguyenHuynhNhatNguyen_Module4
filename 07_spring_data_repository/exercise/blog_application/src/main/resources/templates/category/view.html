@@ -1,26 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="/layout :: head"></head>
+<head th:replace="blog/layout :: head"></head>
 <body>
-<a href="/blog/create">Create new blog</a>
 <h1>Blog</h1>
-<div>
-    <form action="/blog/search" method="get">
-        <input type="text" name="search">
-        <div>
-            <label>Category:</label>
-            <select style="width: 100px" name="category">
-                <option th:each="c : ${categorys}" th:value="${c.id}" th:text="${c.name}"></option>
-            </select>
-        </div>
-        <input type="submit" value="Search">
-    </form>
-</div>
-
 <table border="1" id="product">
     <tr>
         <th>No</th>
-        <th>ID</th>
         <th>Blog name</th>
         <th>Category</th>
         <th>Date Create</th>
@@ -29,9 +14,8 @@
         <th>View</th>
     </tr>
     <th:block th:each="blog, status : ${blogList}">
-        <tr>
+        <tr>               <!--(blogList.number*3)+-->
             <td th:text="${status.count}"></td>
-            <td th:text="${blog.id}"></td>
             <td th:text="${blog.name}"></td>
             <td th:text="${blog.category.name}"></td>
             <td th:text="${blog.dateCreate}"></td>
@@ -42,10 +26,10 @@
     </th:block>
 </table>
 <div>
-    <a th:href="@{'/blog/list'(page=${blogList.number - 1})}" th:if="${blogList.hasPrevious()}">Previous</a>
+    <a th:href="@{'/category/viewPage'(page=${blogList.number - 1}, id=${idCategory})}" th:if="${blogList.hasPrevious()}">Previous</a>
     <span th:text="${blogList.number + 1}"></span>/<span th:text="${blogList.totalPages}"></span>
-    <a th:href="@{'/blog/list'(page=${blogList.number + 1})}" th:if="${blogList.hasNext()}">Next</a>
+    <a th:href="@{'/category/viewPage'(page=${blogList.number + 1}, id=${idCategory})}" th:if="${blogList.hasNext()}">Next</a>
 </div>
-<footer th:replace="/layout :: footer"></footer>
+<footer th:replace="blog/layout :: footer"></footer>
 </body>
 </html>

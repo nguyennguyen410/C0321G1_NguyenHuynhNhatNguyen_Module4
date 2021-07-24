@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="/layout :: head"></head>
+<head th:replace="blog/layout :: head"></head>
 <body>
 <h3>Delete Blog</h3>
 <p>
@@ -9,7 +9,7 @@
     </a>
 </p>
 <div id="form">
-    <form th:action="@{/blog/delete}" th:object="${blog}"
+    <form th:action="@{/blog/edit}" th:object="${blog}"
           method="POST" novalidate="novalidate">
         <div>
             <label>Id</label>
@@ -24,10 +24,21 @@
             <label>Content</label>
             <input type="text" th:field="*{content}"/>
         </div>
+        <div>
+            <label>Date</label>
+            <input type="text" th:field="*{dateCreate}" readonly/>
+        </div>
 
-        <input type="submit" value="Delete"/>
+        <div>
+            <label>Category:</label>
+            <select style="width: 100px" th:field="*{category}">
+                <option th:each="c : ${categorys}" th:value="${c.id}" th:text="${c.name}"></option>
+            </select>
+        </div>
+
+        <input type="submit" value="Edit"/>
     </form>
 </div>
-<footer th:replace="/layout :: footer"></footer>
+<footer th:replace="blog/layout :: footer"></footer>
 </body>
 </html>

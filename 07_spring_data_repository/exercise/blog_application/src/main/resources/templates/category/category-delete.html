@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="/layout :: head"></head>
+<head th:replace="blog/layout :: head"></head>
 <body>
-<h3>Add Category</h3>
+<h3>Delete Category</h3>
 <p>
     <a th:href="@{/category/list}">
-        Back to category list
+        Back to Category list
     </a>
 </p>
 <div id="form">
-    <form th:action="@{/category/save}" th:object="${category}"
+    <form th:action="@{/category/delete}" th:object="${category}"
           method="POST" novalidate="novalidate">
         <div>
             <label>Id</label>
@@ -19,9 +19,9 @@
             <label>Category</label>
             <input type="text" th:field="*{name}"/>
         </div>
-        <input type="submit" value="Save"/>
+        <input type="submit" value="Delete"/>
     </form>
 </div>
-<footer th:replace="/layout :: footer"></footer>
+<footer th:replace="blog/layout :: footer"></footer>
 </body>
 </html>

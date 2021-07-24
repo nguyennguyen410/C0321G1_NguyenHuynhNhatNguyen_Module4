@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping(value = "/blog")
@@ -30,7 +30,7 @@ public class BlogController {
     @GetMapping("/list")
     public ModelAndView showListBlog(@PageableDefault(value = 3, sort = "dateCreate", direction = Sort.Direction.DESC) Pageable pageable) {
         Page<Blog> blogs = blogService.findAll(pageable);
-        ModelAndView modelAndView = new ModelAndView("/list");
+        ModelAndView modelAndView = new ModelAndView("/blog/list.html");
         modelAndView.addObject("blogList", blogs);
         List<Category> categoryList = categoryService.findAll();
         modelAndView.addObject("categorys", categoryList);
@@ -42,7 +42,7 @@ public class BlogController {
         model.addAttribute("blog",new Blog());
         List<Category> categoryList = categoryService.findAll();
         model.addAttribute("categorys", categoryList);
-        return "/create";
+        return "/blog/create.html";
     }
 
     @PostMapping("/save")
@@ -58,7 +58,7 @@ public class BlogController {
         model.addAttribute("blog", blogService.findById(id));
         List<Category> categoryList = categoryService.findAll();
         model.addAttribute("categorys", categoryList);
-        return "/edit";
+        return "/blog/edit.html";
     }
 
     @PostMapping("/edit")
@@ -71,7 +71,7 @@ public class BlogController {
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable int id, Model model) {
         model.addAttribute("blog", blogService.findById(id));
-        return "/delete";
+        return "/blog/delete.html";
     }
 
     @PostMapping("/delete")
@@ -84,46 +84,58 @@ public class BlogController {
     @GetMapping("/view/{id}")
     public String view(@PathVariable int id, Model model) {
         model.addAttribute("blog", blogService.findById(id));
-        return "/view";
+        return "/blog/view.html";
     }
 
     @GetMapping("/search")
-    public ModelAndView search(@RequestParam("search") String name, @RequestParam("category") Long id, @PageableDefault(value = 3, sort = "dateCreate", direction = Sort.Direction.DESC) Pageable pageable) {
+    public ModelAndView search(@RequestParam(value = "search", required = false) String name,
+                               @RequestParam(value = "category", required = false) Long id,
+                               @PageableDefault(value = 3, sort = "dateCreate", direction = Sort.Direction.DESC) Pageable pageable) {
         /*return new ModelAndView("/search-list","blogList",blogService.findAllByNameContaining(name,pageable));*/
+        Page<Blog> blogs = null;
+        String nameKey = "";
+        ModelAndView modelAndView = null;
+
         if(name.equals("")){
-            /*Category categories = categoryService.findById(id);*/
-            Page<Blog> categoryBlog = blogService.findAllByCategory_Id(id, pageable);
-            ModelAndView modelAndView = new ModelAndView("/search-list");
-            modelAndView.addObject("blogList", categoryBlog);
-            modelAndView.addObject("idCategory", id);
-            return modelAndView;
-        } else {
-            Page<Blog> blogs = blogService.findAllByNameContaining(name,pageable);
-            ModelAndView modelAndView = new ModelAndView("/search-list");
+            blogs = blogService.findAllByCategory_Id(id, pageable);
+            modelAndView = new ModelAndView("/blog/search-list.html");
             modelAndView.addObject("blogList", blogs);
             modelAndView.addObject("idCategory", id);
-            return modelAndView;
+            modelAndView.addObject("nameSearch", nameKey);
+            List<Category> categoryList = categoryService.findAll();
+            modelAndView.addObject("categorys", categoryList);
+            /*Category categories = categoryService.findById(id);*/
         }
-    }
-
-    @GetMapping("/searchPre")
-    public ModelAndView showListPre(@RequestParam Long id, @PageableDefault(value = 3, sort = "dateCreate", direction = Sort.Direction.DESC) Pageable pageable) {
-        Page<Blog> blogs = blogService.findAllByCategory_Id(id,pageable);
-        ModelAndView modelAndView = new ModelAndView("/search-list");
-        modelAndView.addObject("blogList", blogs);
-        List<Category> categoryList = categoryService.findAll();
-        modelAndView.addObject("categorys", categoryList);
+        if(!name.equals("")) {
+            blogs = blogService.findAllByNameContaining(name,pageable);
+            modelAndView = new ModelAndView("/blog/search-list.html");
+            modelAndView.addObject("blogList", blogs);
+            modelAndView.addObject("idCategory", id);
+            List<Category> categoryList = categoryService.findAll();
+            modelAndView.addObject("categorys", categoryList);
+        }
         return modelAndView;
     }
 
-    @GetMapping("/searchNext")
-    public ModelAndView showListNext(@RequestParam Long id, @PageableDefault(value = 3, sort = "dateCreate", direction = Sort.Direction.DESC) Pageable pageable) {
-        Page<Blog> blogs = blogService.findAllByCategory_Id(id, pageable);
-        ModelAndView modelAndView = new ModelAndView("/search-list");
+    /*@GetMapping("/searchPre")
+    public ModelAndView showListPre(@RequestParam Long id, @PageableDefault(value = 3, sort = "dateCreate", direction = Sort.Direction.DESC) Pageable pageable) {
+        Page<Blog> blogs = blogService.findAllByCategory_Id(id,pageable);
+        ModelAndView modelAndView = new ModelAndView("/category/search-list.html");
         modelAndView.addObject("blogList", blogs);
         List<Category> categoryList = categoryService.findAll();
         modelAndView.addObject("categorys", categoryList);
         modelAndView.addObject("idCategory",id);
         return modelAndView;
     }
+
+    @GetMapping("/searchNext")
+    public ModelAndView showListNext(@RequestParam Long id, @PageableDefault(value = 3, sort = "dateCreate", direction = Sort.Direction.DESC) Pageable pageable) {
+        Page<Blog> blogs = blogService.findAllByCategory_Id(id, pageable);
+        ModelAndView modelAndView = new ModelAndView("/category/search-list.html");
+        modelAndView.addObject("blogList", blogs);
+        List<Category> categoryList = categoryService.findAll();
+        modelAndView.addObject("categorys", categoryList);
+        modelAndView.addObject("idCategory",id);
+        return modelAndView;
+    }*/
 }
