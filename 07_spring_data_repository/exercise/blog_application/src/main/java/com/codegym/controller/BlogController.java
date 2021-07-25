@@ -27,7 +27,7 @@ public class BlogController {
     @Autowired
     CategoryService categoryService;
 
-    @GetMapping("/list")
+   /* @GetMapping("/list")
     public ModelAndView showListBlog(@PageableDefault(value = 3, sort = "dateCreate", direction = Sort.Direction.DESC) Pageable pageable) {
         Page<Blog> blogs = blogService.findAll(pageable);
         ModelAndView modelAndView = new ModelAndView("/blog/list.html");
@@ -35,7 +35,7 @@ public class BlogController {
         List<Category> categoryList = categoryService.findAll();
         modelAndView.addObject("categorys", categoryList);
         return modelAndView;
-    }
+    }*/
 
     @GetMapping("/create")
     public String createBlog(Model model){
@@ -87,30 +87,39 @@ public class BlogController {
         return "/blog/view.html";
     }
 
-    @GetMapping("/search")
-    public ModelAndView search(@RequestParam(value = "search", required = false) String name,
-                               @RequestParam(value = "category", required = false) Long id,
+    @GetMapping({"/list", "/search"})
+    public ModelAndView search(@RequestParam(value = "search", required = false) Optional<String> name,
+                               @RequestParam(value = "category", required = false) Optional<Long> id,
                                @PageableDefault(value = 3, sort = "dateCreate", direction = Sort.Direction.DESC) Pageable pageable) {
         /*return new ModelAndView("/search-list","blogList",blogService.findAllByNameContaining(name,pageable));*/
         Page<Blog> blogs = null;
-        String nameKey = "";
+        String nameSearch = "";
         ModelAndView modelAndView = null;
 
-        if(name.equals("")){
-            blogs = blogService.findAllByCategory_Id(id, pageable);
+        if(!name.isPresent() && !id.isPresent()){
+            blogs = blogService.findAll(pageable);
+            modelAndView = new ModelAndView("/blog/list.html");
+            modelAndView.addObject("blogList", blogs);
+            List<Category> categoryList = categoryService.findAll();
+            modelAndView.addObject("categorys", categoryList);
+            return modelAndView;
+        }
+
+        if(name.get().equals("")){
+            blogs = blogService.findAllByCategory_Id(id.get(), pageable);
             modelAndView = new ModelAndView("/blog/search-list.html");
             modelAndView.addObject("blogList", blogs);
-            modelAndView.addObject("idCategory", id);
-            modelAndView.addObject("nameSearch", nameKey);
+            modelAndView.addObject("idCategory", id.get());
+            modelAndView.addObject("nameSearch", nameSearch);
             List<Category> categoryList = categoryService.findAll();
             modelAndView.addObject("categorys", categoryList);
             /*Category categories = categoryService.findById(id);*/
         }
-        if(!name.equals("")) {
-            blogs = blogService.findAllByNameContaining(name,pageable);
+        if(!name.get().equals("")) {
+            blogs = blogService.findAllByNameContaining(name.get(),pageable);
             modelAndView = new ModelAndView("/blog/search-list.html");
             modelAndView.addObject("blogList", blogs);
-            modelAndView.addObject("idCategory", id);
+            modelAndView.addObject("idCategory", id.get());
             List<Category> categoryList = categoryService.findAll();
             modelAndView.addObject("categorys", categoryList);
         }
