@@ -115,11 +115,13 @@ public class BlogController {
             modelAndView.addObject("categorys", categoryList);
             /*Category categories = categoryService.findById(id);*/
         }
+
         if(!name.get().equals("")) {
             blogs = blogService.findAllByNameContaining(name.get(),pageable);
             modelAndView = new ModelAndView("/blog/search-list.html");
             modelAndView.addObject("blogList", blogs);
             modelAndView.addObject("idCategory", id.get());
+            modelAndView.addObject("nameSearch",name.get());
             List<Category> categoryList = categoryService.findAll();
             modelAndView.addObject("categorys", categoryList);
         }
