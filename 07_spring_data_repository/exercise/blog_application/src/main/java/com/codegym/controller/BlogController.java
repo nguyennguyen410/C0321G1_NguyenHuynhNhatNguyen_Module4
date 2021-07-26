@@ -97,13 +97,13 @@ public class BlogController {
         /*Long idSearch = null;*/
         ModelAndView modelAndView = null;
 
-        if(!name.isPresent() /*&& !id.isPresent()*/){
+        /*if(!name.isPresent() *//*&& !id.isPresent()*//*){
             blogs = blogService.findAll(pageable);
-            /*modelAndView = new ModelAndView("/blog/search-list.html");
+            *//*modelAndView = new ModelAndView("/blog/search-list.html");
             modelAndView.addObject("blogList", blogs);
             List<Category> categoryList = categoryService.findAll();
             modelAndView.addObject("categorys", categoryList);
-            return modelAndView;*/
+            return modelAndView;*//*
         }
 
         if(name.isPresent() && name.get().equals("")){
@@ -116,6 +116,13 @@ public class BlogController {
             nameSearch = name.get();
             blogs = blogService.findAllByNameContaining(name.get(),pageable);
 
+        }*/
+
+        if(name.isPresent()) {
+            nameSearch = name.get();
+            blogs = blogService.findAllByNameContaining(name.get(),pageable);
+        } else {
+            blogs = blogService.findAll(pageable);
         }
         modelAndView = new ModelAndView("/blog/search-list.html");
         modelAndView.addObject("blogList", blogs);
