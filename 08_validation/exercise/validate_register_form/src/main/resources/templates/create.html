@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Index</title>
+</head>
+<style>
+    .error {
+        color: red;
+    }
+</style>
+<body>
+<div>
+    <fieldset>
+        <legend><h3>Create User</h3></legend>
+        <form th:action="@{/save}" th:object="${userDto}"
+              method="POST">
+            <div>
+                <label>Id:</label>
+                <input type="text" th:field="*{id}"/>
+                <div class="error" th:if="${#fields.hasErrors('id')}" th:errors="*{name}"></div>
+            </div>
+            <div>
+                <label>First Name:</label>
+                <input type="text" th:field="*{firstName}"/>
+                <div class="error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div>
+            </div>
+            <div>
+                <label>Last Name:</label>
+                <input type="text" th:field="*{lastName}"/>
+                <div class="error" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div>
+            </div>
+            <div>
+                <label>Phone:</label>
+                <input type="text" th:field="*{phoneNumber}"/>
+                <div class="error" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></div>
+            </div>
+            <div>
+                <label>Age:</label>
+                <input type="text" th:field="*{age}"/>
+                <div class="error" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></div>
+            </div>
+            <div>
+                <label>Email:</label>
+                <input type="text" th:field="*{email}"/>
+                <div class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+            </div>
+            <input type="submit" value="Save"/>
+        </form>
+    </fieldset>
+</div>
+</body>
+</html>
