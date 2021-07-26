@@ -7,12 +7,12 @@
 <div>
     <form action="/blog/search" method="get">
         <input type="text" name="search">
-        <div>
+        <!--<div>
             <label>Category:</label>
             <select style="width: 100px" name="category">
                 <option th:each="c : ${categorys}" th:value="${c.id}" th:text="${c.name}"></option>
             </select>
-        </div>
+        </div>-->
         <input type="submit" value="Search">
     </form>
 </div>

@@ -7,12 +7,12 @@
 <div>
     <form action="/blog/search" method="get">
         <input type="text" name="search">
-        <div>
+        <!--<div>
             <label>Category:</label>
             <select style="width: 100px" name="category">
                 <option th:each="c : ${categorys}" th:value="${c.id}" th:text="${c.name}"></option>
             </select>
-        </div>
+        </div>-->
         <input type="submit" value="Search">
     </form>
 </div>
@@ -42,9 +42,9 @@
     </th:block>
 </table>
 <div>
-    <a th:href="@{'/blog/search'(page=${blogList.number - 1}, category=${idCategory}, search = ${nameSearch})}" th:if="${blogList.hasPrevious()}">Previous</a>
+    <a th:href="@{'/blog/search'(page=${blogList.number - 1},  search = ${nameSearch})}" th:if="${blogList.hasPrevious()}">Previous</a>
     <span th:text="${blogList.number + 1}"></span>/<span th:text="${blogList.totalPages}"></span>
-    <a th:href="@{'/blog/search'(page=${blogList.number + 1}, category=${idCategory}, search=${nameSearch})}" th:if="${blogList.hasNext()}">Next</a>
+    <a th:href="@{'/blog/search'(page=${blogList.number + 1},  search=${nameSearch})}" th:if="${blogList.hasNext()}">Next</a>
 </div>
 <footer th:replace="blog/layout :: footer"></footer>
 </body>
