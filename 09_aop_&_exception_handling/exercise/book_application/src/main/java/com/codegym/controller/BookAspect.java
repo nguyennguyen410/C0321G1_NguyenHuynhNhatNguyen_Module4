@@ -27,7 +27,7 @@ public class BookAspect {
             throwable.printStackTrace();
         }
         count++;
-        System.err.println(value + "; Number work on page:" + " " + count);
+        System.err.println(value + "; Number active on page:" + " " + count);
         return value;
     }
 
@@ -40,7 +40,7 @@ public class BookAspect {
     @AfterReturning("addMethodsPointCutAfterBorrow()")
     public void AfterCallMethodBorrow(JoinPoint joinPoint) {
         countAfterBorrow++;
-        System.err.println("Time:" + LocalDate.now() + ";" + joinPoint.getSignature().getName() + "; Number Borrow Book: " + countAfterBorrow);
+        System.err.println("Time:" + LocalDate.now() + ";" + joinPoint.getSignature().getName() + "; Number Active Borrow Book: " + countAfterBorrow);
     }
 
     @Pointcut("execution(* com.codegym.controller.BookController.returnBook(..))")
@@ -52,6 +52,6 @@ public class BookAspect {
     @AfterReturning("addMethodsPointCutAfterReturn()")
     public void AfterCallMethodReturn(JoinPoint joinPoint) {
         countAfterReturn++;
-        System.err.println("Time:" + LocalDate.now() + ";" + joinPoint.getSignature().getName() + "; Number Return Book: " + countAfterReturn);
+        System.err.println("Time:" + LocalDate.now() + ";" + joinPoint.getSignature().getName() + "; Number Active Return Book: " + countAfterReturn);
     }
 }
