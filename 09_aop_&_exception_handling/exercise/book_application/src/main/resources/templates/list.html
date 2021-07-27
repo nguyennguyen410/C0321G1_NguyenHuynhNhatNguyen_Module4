@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head"></head>
+<body>
+<h1>Library</h1>
+<span th:text="${success}"></span>
+<a th:href="@{/book/searchId}">Return Book</a>
+<!--<div>
+    <form action="/blog/search" method="get">
+        <input type="text" name="search">
+        &lt;!&ndash;<div>
+            <label>Category:</label>
+            <select style="width: 100px" name="category">
+                <option th:each="c : ${categorys}" th:value="${c.id}" th:text="${c.name}"></option>
+            </select>
+        </div>&ndash;&gt;
+        <input type="submit" value="Search">
+    </form>
+</div>-->
+
+<table border="1" id="product">
+    <tr>
+        <th>No</th>
+        <th>ID</th>
+        <th>Book name</th>
+        <th>Category</th>
+        <th>Author</th>
+        <th>Number</th>
+        <th>Borrow</th>
+    </tr>
+    <th:block th:each="book, status : ${bookList}">
+        <tr>
+            <td th:text="${status.count}"></td>
+            <td th:text="${book.id}"></td>
+            <td th:text="${book.name}"></td>
+            <td th:text="${book.category}"></td>
+            <td th:text="${book.author}"></td>
+            <td th:text="${book.number}"></td>
+            <td><a th:href="@{/book/view/__${book.id}__ }">Borrow</a></td>
+        </tr>
+    </th:block>
+</table>
+<div>
+    <a th:href="@{'/book/list'(page=${bookList.number - 1})}" th:if="${bookList.hasPrevious()}">Previous</a>
+    <span th:text="${bookList.number + 1}"></span>/<span th:text="${bookList.totalPages}"></span>
+    <a th:href="@{'/book/list'(page=${bookList.number + 1})}" th:if="${bookList.hasNext()}">Next</a>
+</div>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>
