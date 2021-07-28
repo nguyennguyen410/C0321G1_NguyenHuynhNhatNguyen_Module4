@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap-4.6.0-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="datatables/css/dataTables.bootstrap4.min.css">
+</head>
+<body>
+<p>
+    <a href="/shop">Shop</a>
+</p>
+<div class="container-fluid">
+    <h1>Pay Success</h1>
+    
+        <table class="table" border="1">
+            <tr><h3>Total Items: <span th:text="${cart.countItemQuantity()}"></span></h3></tr>
+            <tr><h3>Total Products: <span th:text="${cart.countProductQuantity()}"></span></h3></tr>
+            <tr><h3>Total Pay: <span th:text="${cart.countTotalPayment()}"></span></h3></tr>
+        </table>
+
+</div>
+</body>
+<script src="bootstrap-4.6.0-dist/jquery/jquery-3.5.1.min.js"></script>
+<script src="datatables/js/jquery.dataTables.min.js"></script>
+<script src="datatables/js/dataTables.bootstrap4.min.js"></script>
+<script src="bootstrap-4.6.0-dist/jquery/popper.min.js"></script>
+<script src="bootstrap-4.6.0-dist/js/bootstrap.js"></script>
+</html>

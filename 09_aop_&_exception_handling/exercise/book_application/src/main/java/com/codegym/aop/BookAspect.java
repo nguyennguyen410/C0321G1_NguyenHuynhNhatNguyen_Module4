@@ -1,4 +1,4 @@
-package com.codegym.controller;
+package com.codegym.aop;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
