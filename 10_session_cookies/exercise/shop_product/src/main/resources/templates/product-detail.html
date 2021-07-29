@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Shop</title>
-    <link rel="stylesheet" type="text/css" href="bootstrap-4.6.0-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="datatables/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="/bootstrap-4.6.0-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/datatables/css/dataTables.bootstrap4.min.css">
 </head>
 <body>
 <p>
@@ -16,6 +16,7 @@
             <thead>
             <tr>
                 <td>Image</td>
+                <td>Description</td>
                 <td>Name</td>
                 <td>Price</td>
             </tr>
@@ -23,7 +24,17 @@
             <tbody>
             <th:block th:each="product:${products}">
                 <tr>
-                    <td><img th:src="${product.image}"></td>
+                    <td>
+                        <div class="card" style="width: 18rem;">
+                            <a th:href="@{/detail/__${product.id}__}">
+                                <img class="card-img-top" th:src="${product.image}" alt="Card image cap">
+                            </a>
+                            <div class="card-body">
+                                <p class="card-text" th:text="${product.description}"></p>
+                            </div>
+                        </div>
+                    </td>
+                    <td th:text="${product.description}"></td>
                     <td th:text="${product.name}"></td>
                     <td th:text="${product.price}"></td>
                 </tr>
