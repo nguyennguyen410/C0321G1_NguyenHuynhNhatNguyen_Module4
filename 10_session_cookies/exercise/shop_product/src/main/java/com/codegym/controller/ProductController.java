@@ -51,6 +51,10 @@ public class ProductController {
             cart.deCreProduct(productOptional.get());
             return "redirect:/shopping-cart";
         }
+        if (action.equals("show-cart")) {
+            cart.addProduct(productOptional.get());
+            return "redirect:/shopping-cart";
+        }
         cart.addProduct(productOptional.get());
         redirectAttributes.addFlashAttribute("message", "Add " + productOptional.get().getDescription() + " success!!!");
         return "redirect:/shop";

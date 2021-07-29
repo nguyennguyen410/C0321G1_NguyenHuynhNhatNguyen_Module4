@@ -67,8 +67,9 @@ public class Cart {
 
     public void deCreProduct(Product product) {
         Map.Entry<Product, Integer> itemEntry = selectItemInCart(product);
-        if (itemEntry.getValue()==0){
-            return;
+        if (itemEntry.getValue()==1){
+            products.remove(itemEntry.getKey());
+            System.out.println("remove ok");
         } else {
             Integer newQuantity = itemEntry.getValue() - 1;
             products.replace(itemEntry.getKey(),newQuantity);
