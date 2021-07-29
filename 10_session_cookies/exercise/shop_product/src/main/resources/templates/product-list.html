@@ -41,7 +41,7 @@
                     <td th:text="${product.description}"></td>
                     <td th:text="${product.name}"></td>
                     <td th:text="${product.price}"></td>
-                    <td><a th:href="@{/add/__${product.id}__(action='list')}">Add To Cart</a></td>
+                    <td><a class="btn btn-primary" th:href="@{/add/__${product.id}__(action='list')}">Add To Cart</a></td>
                 </tr>
             </th:block>
             </tbody>
