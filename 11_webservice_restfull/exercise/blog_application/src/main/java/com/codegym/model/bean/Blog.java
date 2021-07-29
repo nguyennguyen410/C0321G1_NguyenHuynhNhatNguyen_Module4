@@ -1,8 +1,6 @@
 package com.codegym.model.bean;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerator;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -16,9 +14,12 @@ public class Blog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private String name;
+
     private String content;
 
+    @JsonIgnore
     @ManyToOne(targetEntity = Category.class)
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     private Category category;

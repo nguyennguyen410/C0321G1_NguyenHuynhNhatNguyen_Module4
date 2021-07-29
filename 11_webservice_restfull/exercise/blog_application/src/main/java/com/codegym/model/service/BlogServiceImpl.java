@@ -28,8 +28,8 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public Blog findById(int id) {
-        return blogRepository.findById(id).get();
+    public Optional<Blog> findById(int id) {
+        return blogRepository.findById(id);
     }
 
     @Override

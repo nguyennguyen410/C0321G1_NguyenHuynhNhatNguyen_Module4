@@ -39,11 +39,11 @@ public class BlogController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Blog> findBlog(@PathVariable int id) {
-        Blog blog = blogService.findById(id);
-        if (blog == null) {
+        Optional<Blog> blog = blogService.findById(id);
+        if (!blog.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(blog, HttpStatus.OK);
+        return new ResponseEntity<>(blog.get(), HttpStatus.OK);
     }
 
     @PostMapping
@@ -56,27 +56,27 @@ public class BlogController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Blog> updateBlog(@PathVariable int id, @RequestBody BlogDto blogDto) {
-        Blog blog = blogService.findById(id);
-        if(blog == null){
+        Optional<Blog> blog = blogService.findById(id);
+        if(!blog.isPresent()){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        blog.setName(blogDto.getName());
+        blog.get().setName(blogDto.getName());
 
-        blog.setContent(blogDto.getContent());
-        blog.setCategory(blogDto.getCategory());
-        blog.setDateCreate(blog.getDateCreate());
-        return new ResponseEntity<>(blog, HttpStatus.OK);
+        blog.get().setContent(blogDto.getContent());
+        blog.get().setCategory(blogDto.getCategory());
+        blog.get().setDateCreate(blogDto.getDateCreate());
+        return new ResponseEntity<>(blog.get(), HttpStatus.OK);
     }
 
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Blog> deleteBlog(@PathVariable int id) {
-        Blog blog = blogService.findById(id);
+        Optional<Blog> blog = blogService.findById(id);
         if (blog == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        blogService.delete(blog);
-        return new ResponseEntity<>(blog, HttpStatus.NO_CONTENT);
+        blogService.delete(blog.get());
+        return new ResponseEntity<>(blog.get(), HttpStatus.NO_CONTENT);
     }
 
 }

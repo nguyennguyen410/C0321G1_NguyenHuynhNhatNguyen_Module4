@@ -13,7 +13,7 @@ public interface BlogService {
 
     void save(Blog blog);
 
-    Blog findById(int id);
+    Optional<Blog> findById(int id);
 
     void delete(Blog blog);
 

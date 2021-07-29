@@ -1,6 +1,8 @@
 package com.codegym.model.bean;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
@@ -16,8 +18,10 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "category")
     private List<Blog> blogs;
 
