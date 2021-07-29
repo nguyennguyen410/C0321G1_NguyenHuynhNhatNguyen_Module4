@@ -23,7 +23,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("categories/api")
-public class CategoryController {
+public class CategoryRestController {
     @Autowired
     CategoryService categoryService;
     @Autowired
@@ -48,30 +48,30 @@ public class CategoryController {
     }
 
     @PostMapping
-    public ResponseEntity saveCategory(@RequestBody CategoryDto categoryDto) {
+    public ResponseEntity<Void> saveCategory(@RequestBody CategoryDto categoryDto) {
         Category category = new Category();
         BeanUtils.copyProperties(categoryDto, category);
         categoryService.save(category);
-        return new ResponseEntity(HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Category> updateBlog(@PathVariable Long id, @RequestBody CategoryDto categoryDto) {
+    public ResponseEntity<Void> updateBlog(@PathVariable Long id, @RequestBody CategoryDto categoryDto) {
         Category category = categoryService.findById(id);
         if(category == null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         category.setName(categoryDto.getName());
-        return new ResponseEntity<>(category, HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Category> deleteBlog(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteBlog(@PathVariable Long id) {
         Category category = categoryService.findById(id);
         if (category == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         categoryService.delete(category);
-        return new ResponseEntity<>(category, HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

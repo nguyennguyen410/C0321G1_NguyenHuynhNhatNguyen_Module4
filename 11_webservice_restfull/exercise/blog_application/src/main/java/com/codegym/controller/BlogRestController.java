@@ -20,7 +20,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/blogs/api")
-public class BlogController {
+public class BlogRestController {
     @Autowired
     BlogService blogService;
 
@@ -47,15 +47,15 @@ public class BlogController {
     }
 
     @PostMapping
-    public ResponseEntity saveBlog(@RequestBody BlogDto blogDto) {
+    public ResponseEntity<Void> saveBlog(@RequestBody BlogDto blogDto) {
         Blog blog = new Blog();
         BeanUtils.copyProperties(blogDto, blog);
         blogService.save(blog);
-        return new ResponseEntity(HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Blog> updateBlog(@PathVariable int id, @RequestBody BlogDto blogDto) {
+    public ResponseEntity<Void> updateBlog(@PathVariable int id, @RequestBody BlogDto blogDto) {
         Optional<Blog> blog = blogService.findById(id);
         if(!blog.isPresent()){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -65,18 +65,18 @@ public class BlogController {
         blog.get().setContent(blogDto.getContent());
         blog.get().setCategory(blogDto.getCategory());
         blog.get().setDateCreate(blogDto.getDateCreate());
-        return new ResponseEntity<>(blog.get(), HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Blog> deleteBlog(@PathVariable int id) {
+    public ResponseEntity<Void> deleteBlog(@PathVariable int id) {
         Optional<Blog> blog = blogService.findById(id);
         if (blog == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         blogService.delete(blog.get());
-        return new ResponseEntity<>(blog.get(), HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 }

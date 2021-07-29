@@ -38,7 +38,9 @@ public class ProductController {
     }
 
     @GetMapping("/add/{id}")
-    public String addToCart(@PathVariable Long id, @ModelAttribute Cart cart, @RequestParam("action") String action, RedirectAttributes redirectAttributes) {
+    public String addToCart(@PathVariable Long id, @SessionAttribute Cart cart,
+                            @RequestParam("action") String action,
+                            RedirectAttributes redirectAttributes) {
         Optional<Product> productOptional = productService.findById(id);
         if (!productOptional.isPresent()) {
             return "/error.404";
