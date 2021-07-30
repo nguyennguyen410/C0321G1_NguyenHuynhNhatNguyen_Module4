@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+
+<link rel="stylesheet" type="text/css" href="bootstrap-4.6.0-dist/css/bootstrap.css">
+</head>
+<body>
+<div class="container">
+    <h1>Blog</h1>
+    <div style="margin: 20px">
+
+        <input class="form-group form-check-inline" type="text" id="search" placeholder="Search" autocomplete="off">
+
+    </div>
+    <div class="alert alert-danger" role="alert" style="display: none">
+        <strong>Not Found</strong>
+    </div>
+
+    <table class="table table-bordered" border="1" id="product">
+        <tr>
+            <th>ID</th>
+            <th>Blog name</th>
+            <th>Content</th>
+            <th>Date Create</th>
+            <!--<th>Edit</th>
+            <th>Delete</th>
+            <th>View</th>-->
+        </tr>
+    </table>
+    <input type="button" id="loadMore" value="Load More">
+</div>
+
+</body>
+<script src="bootstrap-4.6.0-dist/jquery/jquery-3.5.1.min.js"></script>
+<script src="bootstrap-4.6.0-dist/jquery/popper.min.js"></script>
+<script src="bootstrap-4.6.0-dist/js/bootstrap.js"></script>
+<script>
+    let page = 0;
+    $(document).ready(function () {
+        $.ajax({
+            url: "http://localhost:8080/blogs/api/page?page=" + page,
+            type: "GET",
+            dataType: "JSON",
+            success: function (data) {
+                let tr = [];
+                for (let i = 0; i < data.content.length; i++) {
+                    tr.push('<tr>');
+                    tr.push('<td>' + data.content[i].id + '</td>');
+                    tr.push('<td>' + data.content[i].name + '</td>');
+                    tr.push('<td>' + data.content[i].content + '</td>');
+                    tr.push('<td>' + data.content[i].dateCreate + '</td>');
+                    tr.push('</tr>')
+                }
+                $('table').append($(tr.join('')));
+            }
+        })
+
+        $("#loadMore").click(function () {
+            page++;
+            $.ajax({
+                url: "http://localhost:8080/blogs/api/page?page=" + page,
+                type: "GET",
+                dataType: "JSON",
+                success: function (data) {
+                    let tr = [];
+                    for (let i = 0; i < data.content.length; i++) {
+                        tr.push('<tr>');
+                        tr.push('<td>' + data.content[i].id + '</td>');
+                        tr.push('<td>' + data.content[i].name + '</td>');
+                        tr.push('<td>' + data.content[i].content + '</td>');
+                        tr.push('<td>' + data.content[i].dateCreate + '</td>');
+                        tr.push('</tr>')
+                    }
+                    $('table').append($(tr.join('')));
+                }
+            })
+        })
+
+        $("#search").keyup(function () {
+            let value = $(this).val();
+            $('table').empty();
+
+            $.ajax({
+                url: "http://localhost:8080/blogs/api/search?search=" + value,
+                type: "GET",
+                dataType: "JSON",
+                success: function (data) {
+                    if (typeof data === "undefined" || !data.length) {
+                        $('.alert-danger').css("display", "block");
+                    } else {
+                        $('.alert-danger').css("display", "none");
+                        let tr = [];
+                        for (let i = 0; i < data.length; i++) {
+                            tr.push('<tr>');
+                            tr.push('<td>' + data[i].id + '</td>');
+                            tr.push('<td>' + data[i].name + '</td>');
+                            tr.push('<td>' + data[i].content + '</td>');
+                            tr.push('<td>' + data[i].dateCreate + '</td>');
+                            tr.push('</tr>')
+                        }
+                        $('table').append($(tr.join('')));
+                    }
+
+                }
+            })
+
+        })
+    })
+
+
+</script>
+</html>

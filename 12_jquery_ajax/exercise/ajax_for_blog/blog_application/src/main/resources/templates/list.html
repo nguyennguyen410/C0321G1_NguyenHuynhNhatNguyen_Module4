@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/blog/layout :: head">
+    <link rel="stylesheet" type="text/css" href="bootstrap-4.6.0-dist/css/bootstrap.css">
+</head>
+<body>
+<h1>Blog</h1>
+<div>
+    <form action="/blog/search" method="get">
+        <input type="text" name="search">
+    </form>
+</div>
+
+<table border="1" id="product">
+    <tr>
+        <th>No</th>
+        <th>ID</th>
+        <th>Blog name</th>
+        <th>Category</th>
+        <th>Date Create</th>
+        <!--<th>Edit</th>
+        <th>Delete</th>
+        <th>View</th>-->
+    </tr>
+</table>
+<!--<div>
+    <a th:href="@{'/blog/list'(page=${blogList.number - 1})}" th:if="${blogList.hasPrevious()}">Previous</a>
+    <span th:text="${blogList.number + 1}"></span>/<span th:text="${blogList.totalPages}"></span>
+    <a th:href="@{'/blog/list'(page=${blogList.number + 1})}" th:if="${blogList.hasNext()}">Next</a>
+</div>-->
+<footer th:replace="/blog/layout :: footer"></footer>
+</body>
+<script src="bootstrap-4.6.0-dist/jquery/jquery-3.5.1.min.js"></script>
+<script src="bootstrap-4.6.0-dist/jquery/popper.min.js"></script>
+<script src="bootstrap-4.6.0-dist/js/bootstrap.js"></script>
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: "http://localhost:8080/blogs/api",
+            type: "GET",
+            dataType: "JSON",
+            success: function (data) {
+                console.log(data)
+                let tr = [];
+                for (let i = 0; i<data.content.length; i++){
+                    tr.push('<tr>');
+                    tr.push('<td>' + data.content[i].id + '</td>');
+                    tr.push('<td>' + data.content[i].id + '</td>');
+                    tr.push('<td>' + data.content[i].id + '</td>');
+                    tr.push('<td>' + data.content[i].id + '</td>');
+                    tr.push('</tr>')
+                }
+                $('table').append($(tr.join('')));
+            }
+        })
+    })
+</script>
+</html>
