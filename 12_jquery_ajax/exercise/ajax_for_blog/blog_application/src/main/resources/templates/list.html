@@ -1,3 +1,4 @@
+<!--
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="/blog/layout :: head">
@@ -18,16 +19,16 @@
         <th>Blog name</th>
         <th>Category</th>
         <th>Date Create</th>
-        <!--<th>Edit</th>
+        &lt;!&ndash;<th>Edit</th>
         <th>Delete</th>
-        <th>View</th>-->
+        <th>View</th>&ndash;&gt;
     </tr>
 </table>
-<!--<div>
+&lt;!&ndash;<div>
     <a th:href="@{'/blog/list'(page=${blogList.number - 1})}" th:if="${blogList.hasPrevious()}">Previous</a>
     <span th:text="${blogList.number + 1}"></span>/<span th:text="${blogList.totalPages}"></span>
     <a th:href="@{'/blog/list'(page=${blogList.number + 1})}" th:if="${blogList.hasNext()}">Next</a>
-</div>-->
+</div>&ndash;&gt;
 <footer th:replace="/blog/layout :: footer"></footer>
 </body>
 <script src="bootstrap-4.6.0-dist/jquery/jquery-3.5.1.min.js"></script>
@@ -55,4 +56,4 @@
         })
     })
 </script>
-</html>
+</html>-->
