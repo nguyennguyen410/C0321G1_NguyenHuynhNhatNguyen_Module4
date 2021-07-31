@@ -53,14 +53,7 @@ public class SmartphoneController {
 
     @PutMapping
     public ResponseEntity<Void> EditSmartphone(@RequestBody Smartphone smartphone) {
-        Optional<Smartphone> smartphoneOptional = smartphoneService.findById(smartphone.getId());
-        if (!smartphoneOptional.isPresent()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        smartphoneOptional.get().setProducer(smartphone.getProducer());
-        smartphoneOptional.get().setModel(smartphone.getModel());
-        smartphoneOptional.get().setPrice(smartphone.getPrice());
-        smartphoneService.save(smartphoneOptional.get());
+        smartphoneService.save(smartphone);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
