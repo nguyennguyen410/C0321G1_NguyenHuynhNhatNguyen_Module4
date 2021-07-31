@@ -20,13 +20,14 @@
             <th>ID</th>
             <th>Blog name</th>
             <th>Content</th>
+            <th>Category</th>
             <th>Date Create</th>
             <!--<th>Edit</th>
             <th>Delete</th>
             <th>View</th>-->
         </tr>
     </table>
-    <input type="button" id="loadMore" value="Load More">
+    <input class="btn btn-success" type="button" id="loadMore" value="Load More">
 </div>
 
 </body>
@@ -47,6 +48,7 @@
                     tr.push('<td>' + data.content[i].id + '</td>');
                     tr.push('<td>' + data.content[i].name + '</td>');
                     tr.push('<td>' + data.content[i].content + '</td>');
+                    tr.push('<td>' + data.content[i].category.name + '</td>');
                     tr.push('<td>' + data.content[i].dateCreate + '</td>');
                     tr.push('</tr>')
                 }
@@ -67,6 +69,7 @@
                         tr.push('<td>' + data.content[i].id + '</td>');
                         tr.push('<td>' + data.content[i].name + '</td>');
                         tr.push('<td>' + data.content[i].content + '</td>');
+                        tr.push('<td>' + data.content[i].category.name + '</td>');
                         tr.push('<td>' + data.content[i].dateCreate + '</td>');
                         tr.push('</tr>')
                     }
@@ -87,6 +90,13 @@
                     if (typeof data === "undefined" || !data.length) {
                         $('.alert-danger').css("display", "block");
                     } else {
+                        let content = '    <tr>\n' +
+                            '        <td>ID</td>\n' +
+                            '        <td>Name</td>\n' +
+                            '        <td>Content</td>\n' +
+                            '        <td>Category</td>\n' +
+                            '        <td>Day Create</td>\n' +
+                            '    </tr>';
                         $('.alert-danger').css("display", "none");
                         let tr = [];
                         for (let i = 0; i < data.length; i++) {
@@ -94,10 +104,12 @@
                             tr.push('<td>' + data[i].id + '</td>');
                             tr.push('<td>' + data[i].name + '</td>');
                             tr.push('<td>' + data[i].content + '</td>');
+                            tr.push('<td>' + data[i].category.name + '</td>');
                             tr.push('<td>' + data[i].dateCreate + '</td>');
                             tr.push('</tr>')
                         }
-                        $('table').append($(tr.join('')));
+                        content += (tr.join(''));
+                        $('table').append(content);
                     }
 
                 }
@@ -105,7 +117,5 @@
 
         })
     })
-
-
 </script>
 </html>

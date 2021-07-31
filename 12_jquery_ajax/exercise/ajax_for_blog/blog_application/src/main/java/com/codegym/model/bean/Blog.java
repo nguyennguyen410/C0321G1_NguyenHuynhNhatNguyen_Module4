@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.*;
 import javax.persistence.*;
 import java.util.Date;
 
-@JsonIdentityInfo(
+/*@JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id"
-)
+)*/
 @Entity
 public class Blog {
     @Id
@@ -19,7 +19,7 @@ public class Blog {
 
     private String content;
 
-    @JsonIgnore
+    @JsonManagedReference
     @ManyToOne(targetEntity = Category.class)
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     private Category category;
