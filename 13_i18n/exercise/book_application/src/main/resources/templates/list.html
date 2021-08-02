@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head"></head>
+<body>
+Language: <a href="?lang=en">English</a> | <a href="?lang=vi">VietNam</a>
+<h1 th:text="#{message.heading}"></h1>
+<span th:if="${success}" th:text="#{message.success}"></span>
+<a th:href="@{/book/searchId}" th:text="#{message.returnBook}">Return Book</a>
+
+<table border="1" id="product">
+    <tr>
+        <th th:text="#{message.no}"></th>
+        <th th:text="#{message.id}"></th>
+        <th th:text="#{message.bookName}"></th>
+        <th th:text="#{message.category}"></th>
+        <th th:text="#{message.author}"></th>
+        <th th:text="#{message.number}"></th>
+        <th th:text="#{message.borrow}"></th>
+    </tr>
+    <th:block th:each="book, status : ${bookList}">
+        <tr>
+            <td th:text="${status.count}"></td>
+            <td th:text="${book.id}"></td>
+            <td th:text="${book.name}"></td>
+            <td th:text="${book.category}"></td>
+            <td th:text="${book.author}"></td>
+            <td th:text="${book.number}"></td>
+            <td><a th:href="@{/book/view/__${book.id}__ }" th:text="#{message.borrow}"></a></td>
+        </tr>
+    </th:block>
+</table>
+<div>
+    <a th:href="@{'/book/list'(page=${bookList.number - 1})}" th:if="${bookList.hasPrevious()}" th:text="#{message.previous}"></a>
+    <span th:text="${bookList.number + 1}"></span>/<span th:text="${bookList.totalPages}"></span>
+    <a th:href="@{'/book/list'(page=${bookList.number + 1})}" th:if="${bookList.hasNext()}" th:text="#{message.next}"></a>
+</div>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>

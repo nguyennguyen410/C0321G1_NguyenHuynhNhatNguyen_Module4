@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head"></head>
+<body>
+<p>
+    <a th:href="@{/book/list}" th:text="#{message.backToList}"></a>
+</p>
+<div id="form">
+    <form th:action="@{/book/return}" th:object="${book}"
+          method="POST" novalidate="novalidate">
+        <div>
+            <label th:text="#{message.id}"></label>
+            <input type="text" th:field="*{id}" readonly/>
+        </div>
+        <div>
+            <label th:text="#{message.bookName}"></label>
+            <input type="text" th:field="*{name}" readonly/>
+        </div>
+        <div>
+            <label th:text="#{message.category}"></label>
+            <input type="text" th:field="*{category}" readonly/>
+        </div>
+        <div>
+            <label th:text="#{message.author}"></label>
+            <input type="text" th:field="*{author}" readonly/>
+        </div>
+        <div>
+            <label th:text="#{message.number}"></label>
+            <input type="text" th:field="*{number}" readonly/>
+        </div>
+        <input type="submit" th:value="#{message.returnBook}"/>
+    </form>
+</div>
+<footer th:replace="layout :: footer"></footer>
+</body>
+</html>

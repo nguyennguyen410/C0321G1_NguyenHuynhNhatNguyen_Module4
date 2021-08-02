@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head"></head>
+<body>
+<h1 th:text="#{message.heading}"></h1>
+<span th:text="${success}"></span>
+<div>
+    <form action="/book/return" method="get">
+        <label th:text="#{message.bookId}"></label>
+        <input type="text" name="idReturn">
+        <input type="submit" th:value="#{message.returnBook}">
+    </form>
+</div>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>
