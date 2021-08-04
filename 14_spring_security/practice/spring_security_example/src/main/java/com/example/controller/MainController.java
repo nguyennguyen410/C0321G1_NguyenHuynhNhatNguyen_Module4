@@ -3,7 +3,7 @@ package com.example.controller;
 import java.security.Principal;
 
 
-import com.example.ulti.WebUtils;
+import com.example.util.WebUtils;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;

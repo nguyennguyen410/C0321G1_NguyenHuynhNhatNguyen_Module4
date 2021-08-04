@@ -1,4 +1,4 @@
-package com.example.ulti;
+package com.example.util;
 
 import java.util.Collection;
 
