@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="blog/layout :: head"></head>
+<body>
+<h3>View Category</h3>
+<p>
+    <a th:href="@{/category/list}">
+        Back to product list
+    </a>
+</p>
+<div id="detail">
+    <div class="cusdetail">
+        <label>ID:</label>
+        <label th:text="${category.id}"></label>
+    </div>
+    <div class="cusdetail">
+        <label>Name:</label>
+        <label th:text="${category.name}"></label>
+    </div>
+</div>
+<footer th:replace="blog/layout :: footer"></footer>
+</body>
+</html>
