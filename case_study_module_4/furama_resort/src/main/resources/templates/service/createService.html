@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="/layout :: logo"></div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/employee">Employee <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/customer">Customer <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/service">Service <span
+                        class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/contract">Contract <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+<div class="row">
+    <div class="col-md-3">
+        <button type="button" class="list-group-item list-group-item-action">
+            <a href="/createCustomer" style="color: darkblue">Create Customer</a>
+        </button>
+        <button type="button" class="list-group-item list-group-item-action">
+            <a href="/customer" style="color: darkblue">List Customer</a>
+        </button>
+    </div>
+    <div class="col-md-9">
+        <div align="center">
+            <form class="form font-weight-normal" method="post" th:action="@{/saveService}" th:object="${serviceDto}">
+                <table class="table" cellpadding="5">
+                    <caption>
+                        <h2>Add New Service</h2>
+                    </caption>
+                    <tr>
+                        <th>Service Id:</th>
+                        <td>
+                            <input th:field="*{serviceId}" type="text" size="45"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Service Name:</th>
+                        <td>
+                            <input th:field="*{serviceName}" type="text" size="45"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Service Area:</th>
+                        <td>
+                            <input th:field="*{serviceArea}" type="text" size="45"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Service Cost:</th>
+                        <td>
+                            <input th:field="*{serviceCost}" type="text" size="45"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Service Max People:</th>
+                        <td>
+                            <input th:field="*{serviceMaxPeople}" type="text" size="45"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Rent Type:</th>
+                        <td>
+                            <select style="width: 100px" th:field="*{rentType}">
+                                <option th:each="c : ${rentTypeList}" th:value="${c.rentTypeId}"
+                                        th:text="${c.rentTypeName}"></option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Service Type:</th>
+                        <td>
+                            <select style="width: 100px" th:field="*{serviceType}">
+                                <option th:each="c : ${serviceTypeList}" th:value="${c.serviceTypeId}"
+                                        th:text="${c.serviceTypeName}"></option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Standard Room:</th>
+                        <td>
+                            <input th:field="*{standardRoom}" type="text" name="customerIdCard" id="customerIdCard"
+                                   size="45"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Description Other Convenience:</th>
+                        <td>
+                            <input type="text" th:field="*{descriptionOtherConvenience}" name="customerPhone"
+                                   id="customerPhone" size="45"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Pool Area:</th>
+                        <td>
+                            <input th:field="*{poolArea}" type="text" size="45"/>
+
+                        </td>
+                    </tr>
+                        <th>Number Of Floor:</th>
+                        <td>
+                            <input th:field="*{numberOfFloor}" type="text" size="45"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                            <input class="btn btn-success" type="submit" value="Save"/>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div th:insert="/layout :: footer"></div>
+</body>
+<div th:insert="/layout :: script"></div>
+</html>

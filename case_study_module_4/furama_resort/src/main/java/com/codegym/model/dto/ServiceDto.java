@@ -1,13 +1,16 @@
 package com.codegym.model.dto;
 
+import com.codegym.model.entity.RentType;
+import com.codegym.model.entity.ServiceType;
+
 public class ServiceDto {
     private String serviceId;
     private String serviceName;
     private int serviceArea;
     private double serviceCost;
     private int serviceMaxPeople;
-    private int rentTypeId;
-    private int serviceTypeId;
+    private RentType rentType;
+    private ServiceType serviceType;
     private String standardRoom;
     private String descriptionOtherConvenience;
     private double poolArea;
@@ -56,20 +59,20 @@ public class ServiceDto {
         this.serviceMaxPeople = serviceMaxPeople;
     }
 
-    public int getRentTypeId() {
-        return rentTypeId;
+    public RentType getRentType() {
+        return rentType;
     }
 
-    public void setRentTypeId(int rentTypeId) {
-        this.rentTypeId = rentTypeId;
+    public void setRentType(RentType rentType) {
+        this.rentType = rentType;
     }
 
-    public int getServiceTypeId() {
-        return serviceTypeId;
+    public ServiceType getServiceType() {
+        return serviceType;
     }
 
-    public void setServiceTypeId(int serviceTypeId) {
-        this.serviceTypeId = serviceTypeId;
+    public void setServiceType(ServiceType serviceType) {
+        this.serviceType = serviceType;
     }
 
     public String getStandardRoom() {

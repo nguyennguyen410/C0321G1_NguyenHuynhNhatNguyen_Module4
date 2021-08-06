@@ -1,17 +1,34 @@
 package com.codegym.model.dto;
 
+import com.codegym.model.entity.CustomerType;
+import com.codegym.model.entity.Gender;
+
 public class CustomerDto {
     private String customerId;
-    private int customerTypeId;
+    private CustomerType customerType;
     private String customerName;
     private String customerBirthday;
-    private int customerGender;
+    private Gender customerGender;
     private String customerIdCard;
     private String customerPhone;
     private String customerEmail;
     private String customerAddress;
 
     public CustomerDto() {
+    }
+
+    public CustomerDto(String customerId, CustomerType customerType, String customerName, String customerBirthday,
+                       Gender customerGender, String customerIdCard, String customerPhone, String customerEmail,
+                       String customerAddress) {
+        this.customerId = customerId;
+        this.customerType = customerType;
+        this.customerName = customerName;
+        this.customerBirthday = customerBirthday;
+        this.customerGender = customerGender;
+        this.customerIdCard = customerIdCard;
+        this.customerPhone = customerPhone;
+        this.customerEmail = customerEmail;
+        this.customerAddress = customerAddress;
     }
 
     public String getCustomerId() {
@@ -22,12 +39,20 @@ public class CustomerDto {
         this.customerId = customerId;
     }
 
-    public int getCustomerTypeId() {
-        return customerTypeId;
+    public CustomerType getCustomerType() {
+        return customerType;
     }
 
-    public void setCustomerTypeId(int customerTypeId) {
-        this.customerTypeId = customerTypeId;
+    public void setCustomerType(CustomerType customerType) {
+        this.customerType = customerType;
+    }
+
+    public Gender getCustomerGender() {
+        return customerGender;
+    }
+
+    public void setCustomerGender(Gender customerGender) {
+        this.customerGender = customerGender;
     }
 
     public String getCustomerName() {
@@ -44,14 +69,6 @@ public class CustomerDto {
 
     public void setCustomerBirthday(String customerBirthday) {
         this.customerBirthday = customerBirthday;
-    }
-
-    public int getCustomerGender() {
-        return customerGender;
-    }
-
-    public void setCustomerGender(int customerGender) {
-        this.customerGender = customerGender;
     }
 
     public String getCustomerIdCard() {

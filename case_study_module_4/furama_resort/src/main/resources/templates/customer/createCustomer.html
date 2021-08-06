@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="/layout :: logo"></div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/employee">Employee <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/customer">Customer <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/service">Service <span
+                        class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/contract">Contract <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+<div class="row">
+    <div class="col-md-3">
+        <button type="button" class="list-group-item list-group-item-action">
+            <a href="/createCustomer" style="color: darkblue">Create Customer</a>
+        </button>
+        <button type="button" class="list-group-item list-group-item-action">
+            <a href="/customer" style="color: darkblue">List Customer</a>
+        </button>
+    </div>
+    <div class="col-md-9">
+        <div align="center">
+            <form class="form font-weight-normal" method="post" th:action="@{/saveCustomer}" th:object="${customerDto}">
+                <table class="table" cellpadding="5">
+                    <caption>
+                        <h2>Add New Customer</h2>
+                    </caption>
+                    <tr>
+                        <th>Customer Id:</th>
+                        <td>
+                            <input th:field="*{customerId}" type="text" name="customerId" id="customerId" size="45"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Customer Type Id:</th>
+                        <td>
+                        <select style="width: 100px" th:field="*{customerType}">
+                            <option th:each="c : ${customerTypeList}" th:value="${c.customerTypeId}" th:text="${c.customerTypeName}"></option>
+                        </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Customer Name:</th>
+                        <td>
+                            <input th:field="*{customerName}" type="text" name="customerName" id="customerName" size="45"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Customer Birthday:</th>
+                        <td>
+                            <input th:field="*{customerBirthday}" type="text" name="customerBirthday" id="customerBirthday" size="45"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Customer Gender:</th>
+                        <td>
+                        <select style="width: 100px" th:field="*{customerGender}">
+                            <option th:each="c : ${gender}" th:value="${c.genderId}" th:text="${c.genderName}"></option>
+                        </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Customer Id Card:</th>
+                        <td>
+                            <input th:field="*{customerIdCard}" type="text" name="customerIdCard" id="customerIdCard" size="45"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Customer Phone:</th>
+                        <td>
+                            <input  type="text" th:field="*{customerPhone}" name="customerPhone" id="customerPhone" size="45"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Customer Email:</th>
+                        <td>
+                            <input th:field="*{customerEmail}" type="text" name="customerEmail" id="customerEmail" size="45"/>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Customer Address:</th>
+                        <td>
+                            <input th:field="*{customerAddress}" type="text" name="customerAddress" id="customerAddress" size="45"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                            <input class="btn btn-success" type="submit" value="Save"/>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div th:insert="/layout :: footer"></div>
+</body>
+<div th:insert="/layout :: script"></div>
+</html>
