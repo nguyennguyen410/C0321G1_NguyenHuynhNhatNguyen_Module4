@@ -1,7 +1,14 @@
 package com.codegym.model.dto;
 
+import com.codegym.model.entity.Division;
+import com.codegym.model.entity.EducationDegree;
+import com.codegym.model.entity.Position;
+import com.codegym.model.entity.User;
+
+import javax.persistence.*;
+
 public class EmployeeDto {
-    private int employeeId;
+    private String employeeId;
     private String employeeName;
     private String employeeBirthday;
     private String employeeIdCard;
@@ -9,19 +16,36 @@ public class EmployeeDto {
     private String employeePhone;
     private String employeeEmail;
     private String employeeAddress;
-    private int positionId;
-    private int educationDegreeId;
-    private int divisionId;
+    private Position position;
+    private EducationDegree educationDegree;
+    private Division division;
     private String username;
 
     public EmployeeDto() {
     }
 
-    public int getEmployeeId() {
+    public EmployeeDto(String employeeId, String employeeName, String employeeBirthday, String employeeIdCard,
+                       double employeeSalary, String employeePhone, String employeeEmail, String employeeAddress,
+                       Position position, EducationDegree educationDegree, Division division, String username) {
+        this.employeeId = employeeId;
+        this.employeeName = employeeName;
+        this.employeeBirthday = employeeBirthday;
+        this.employeeIdCard = employeeIdCard;
+        this.employeeSalary = employeeSalary;
+        this.employeePhone = employeePhone;
+        this.employeeEmail = employeeEmail;
+        this.employeeAddress = employeeAddress;
+        this.position = position;
+        this.educationDegree = educationDegree;
+        this.division = division;
+        this.username = username;
+    }
+
+    public String getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(int employeeId) {
+    public void setEmployeeId(String employeeId) {
         this.employeeId = employeeId;
     }
 
@@ -81,28 +105,28 @@ public class EmployeeDto {
         this.employeeAddress = employeeAddress;
     }
 
-    public int getPositionId() {
-        return positionId;
+    public Position getPosition() {
+        return position;
     }
 
-    public void setPositionId(int positionId) {
-        this.positionId = positionId;
+    public void setPosition(Position position) {
+        this.position = position;
     }
 
-    public int getEducationDegreeId() {
-        return educationDegreeId;
+    public EducationDegree getEducationDegree() {
+        return educationDegree;
     }
 
-    public void setEducationDegreeId(int educationDegreeId) {
-        this.educationDegreeId = educationDegreeId;
+    public void setEducationDegree(EducationDegree educationDegree) {
+        this.educationDegree = educationDegree;
     }
 
-    public int getDivisionId() {
-        return divisionId;
+    public Division getDivision() {
+        return division;
     }
 
-    public void setDivisionId(int divisionId) {
-        this.divisionId = divisionId;
+    public void setDivision(Division division) {
+        this.division = division;
     }
 
     public String getUsername() {
@@ -113,3 +137,4 @@ public class EmployeeDto {
         this.username = username;
     }
 }
+

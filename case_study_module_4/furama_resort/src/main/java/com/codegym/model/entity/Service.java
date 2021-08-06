@@ -14,6 +14,7 @@ public class Service {
     private double serviceCost;
     private int serviceMaxPeople;
 
+
     @ManyToOne(targetEntity = RentType.class)
     @JoinColumn(name = "rent_type_id", referencedColumnName = "rentTypeId")
     private RentType rentType;
@@ -117,4 +118,5 @@ public class Service {
     public void setNumberOfFloor(int numberOfFloor) {
         this.numberOfFloor = numberOfFloor;
     }
+
 }

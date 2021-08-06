@@ -24,13 +24,15 @@ public class Customer {
     private String customerPhone;
     private String customerEmail;
     private String customerAddress;
+    private int customerStatus;
+
 
     public Customer() {
     }
 
     public Customer(String customerId, CustomerType customerType, String customerName, String customerBirthday,
                     Gender customerGender, String customerIdCard, String customerPhone, String customerEmail,
-                    String customerAddress) {
+                    String customerAddress, int customerStatus) {
         this.customerId = customerId;
         this.customerType = customerType;
         this.customerName = customerName;
@@ -40,6 +42,7 @@ public class Customer {
         this.customerPhone = customerPhone;
         this.customerEmail = customerEmail;
         this.customerAddress = customerAddress;
+        this.customerStatus = customerStatus;
     }
 
     public String getCustomerId() {
@@ -112,5 +115,13 @@ public class Customer {
 
     public void setCustomerAddress(String customerAddress) {
         this.customerAddress = customerAddress;
+    }
+
+    public int getCustomerStatus() {
+        return customerStatus;
+    }
+
+    public void setCustomerStatus(int customerStatus) {
+        this.customerStatus = customerStatus;
     }
 }

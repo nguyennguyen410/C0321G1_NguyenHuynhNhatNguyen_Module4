@@ -60,6 +60,7 @@ public class CustomerController {
     public String saveCustomer(@ModelAttribute CustomerDto customerDto, RedirectAttributes redirect){
         Customer customer = new Customer();
         BeanUtils.copyProperties(customerDto, customer);
+        customer.setCustomerStatus(0);
         customerService.save(customer);
         redirect.addFlashAttribute("success", "Create customer successfully!");
         return "redirect:/customer";
@@ -79,7 +80,8 @@ public class CustomerController {
     @GetMapping("/deleteCustomer")
     public String deleteCustomer(@RequestParam String customerIdDelete){
         Optional<Customer> customer = customerService.findById(customerIdDelete);
-        customerService.delete(customer.get());
+        customer.get().setCustomerStatus(1);
+        customerService.save(customer.get());
         return "redirect:/customer";
     }
 
