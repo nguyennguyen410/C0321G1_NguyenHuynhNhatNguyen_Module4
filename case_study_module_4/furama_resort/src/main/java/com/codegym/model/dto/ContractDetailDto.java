@@ -1,28 +1,20 @@
-package com.codegym.model.entity;
+package com.codegym.model.dto;
 
-import javax.persistence.Entity;
+import com.codegym.model.entity.AttachService;
+import com.codegym.model.entity.Contract;
+
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-@Entity
-public class ContractDetail {
-    @Id
+public class ContractDetailDto {
     private String contractDetailId;
-
-    @ManyToOne(targetEntity = Contract.class)
-    @JoinColumn(name = "contract_detail_contract", referencedColumnName = "contractId")
     private Contract contract;
-
-    @ManyToOne(targetEntity = AttachService.class)
-    @JoinColumn(name = "attach_service_contract", referencedColumnName = "attachServiceId")
     private AttachService attachService;
-
     private int quantity;
-
     private double totalMoney;
 
-    public ContractDetail() {
+    public ContractDetailDto() {
     }
 
     public String getContractDetailId() {

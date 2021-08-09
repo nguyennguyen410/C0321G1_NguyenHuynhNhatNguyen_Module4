@@ -63,65 +63,64 @@
                     <th>No</th>
                     <th>Customer ID</th>
                     <th>Customer Name</th>
-                    <th>Customer Type</th>
-                    <th>Customer Birthday</th>
-                    <th>Customer Gender</th>
-                    <th>Customer ID Card</th>
-                    <th>Customer Phone</th>
-                    <th>Customer Email</th>
-                    <th>Customer Address</th>
-                    <th>edit</th>
-                    <th>delete</th>
+                    <th>Contract Id</th>
+                    <th>Contract End Date</th>
+                    <th>Employee</th>
+                    <th>Service Id</th>
+                    <th>Service Name</th>
+                    <th:block th:each="contract, status : ${contracts}">
+                        <th:block th:each="contractDetail, status : ${contract.contractDetails}">
+                            <th>Attach Service</th>
+                            <!--<th>Quantity</th>-->
+                        </th:block>
+                    </th:block>
+
+                    <!--<th>edit</th>
+                    <th>delete</th>-->
                 </tr>
                 </thead>
                 <tbody>
-                <th:block th:each="customer, status : ${customers}">
+                <th:block th:each="contract, status : ${contracts}">
                     <tr>
                         <td th:text="${status.count}"></td>
-                        <td th:text="${customer.customerId}"></td>
-                        <td th:text="${customer.customerName}"></td>
-                        <td th:text="${customer.customerType.customerTypeName}"></td>
-                        <td th:text="${customer.customerBirthday}"></td>
-                        <td th:text="${customer.customerGender.genderName}"></td>
-                        <td th:text="${customer.customerIdCard}"></td>
-                        <td th:text="${customer.customerPhone}"></td>
-                        <td th:text="${customer.customerEmail}"></td>
-                        <td th:text="${customer.customerAddress}"></td>
-                        <td>
+                        <td th:text="${contract.customer.customerId}"></td>
+                        <td th:text="${contract.customer.customerName}"></td>
+                        <td th:text="${contract.contractId}"></td>
+                        <td th:text="${contract.contractEndDate}"></td>
+                        <td th:text="${contract.employee.employeeName}"></td>
+                        <td th:text="${contract.service.serviceId}"></td>
+                        <td th:text="${contract.service.serviceName}"></td>
+                        <th:block th:each="contractDetail, status : ${contract.contractDetails}">
+                            <td>
+                                <span th:text="${contractDetail.attachService.attachServiceName}"></span>
+                                <span>(</span>
+                                <span th:text="${contractDetail.quantity}"></span>
+                                <span>)</span>
+                            </td>
+                            <!--<td th:text="${contractDetail.quantity}"></td>-->
+                        </th:block>
+                        <!--<td>
                             <a class="btn btn-warning" th:href="@{/editCustomer/__${customer.customerId}__}">Edit</a>
                         </td>
                         <td>
-                            <button type="button" class="deleteButton btn btn-danger" data-toggle="modal"
-                                    data-target="#deleteModal">
+
+                            <button
+                                    type="button" class="deleteButton btn btn-danger" data-toggle="modal" data-target="#deleteModal">
                                 Delete
                             </button>
                             <input type="hidden" th:value="${customer.customerId}">
                             <input type="hidden" th:value="${customer.customerName}">
-                        </td>
+                        </td>-->
                         <!--<td><a th:href="@{/blog/view/__${blog.id}__ }">View</a></td>-->
                     </tr>
                 </th:block>
                 </tbody>
             </table>
             <div>
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                        <li class="page-item"><a class="page-link" th:href="@{'/customer'(page=${customers.number - 1})}"
-                                                 th:if="${customers.hasPrevious()}">Previous</a></li>
-                        <li class="page-item"><a class="page-link" th:text="${customers.number + 1}"
-                                                 th:href="@{'/customer'(page=${customers.number})}"
-                                                 th:if="${customers.hasNext()}"></a></li>
-                        <li class="page-item"><a class="page-link" th:text="${customers.number + 2}"
-                                                 th:href="@{'/customer'(page=${customers.number + 1})}"
-                                                 th:if="${customers.hasNext()}"></a></li>
-                        <li class="page-item"><a class="page-link" th:href="@{'/customer'(page=${customers.number + 1})}"
-                                                 th:if="${customers.hasNext()}">Next</a></li>
-                    </ul>
-                </nav>
-                <!--<a th:href="@{'/customer'(page=${customers.number - 1})}"
-                   th:if="${customers.hasPrevious()}">Previous</a>
-                <span th:text="${customers.number + 1}"></span>/<span th:text="${customers.totalPages}"></span>
-                <a th:href="@{'/customer'(page=${customers.number + 1})}" th:if="${customers.hasNext()}">Next</a>-->
+                <a th:href="@{'/customerUsingService'(page=${contracts.number - 1})}"
+                   th:if="${contracts.hasPrevious()}">Previous</a>
+                <span th:text="${contracts.number + 1}"></span>/<span th:text="${contracts.totalPages}"></span>
+                <a th:href="@{'/customerUsingService'(page=${contracts.number + 1})}" th:if="${contracts.hasNext()}">Next</a>
             </div>
             <!-- Modal -->
             <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

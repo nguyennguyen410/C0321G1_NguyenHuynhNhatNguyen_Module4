@@ -1,6 +1,7 @@
 package com.codegym.model.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Customer {
@@ -25,6 +26,9 @@ public class Customer {
     private String customerEmail;
     private String customerAddress;
     private int customerStatus;
+
+    @OneToMany(mappedBy = "customer")
+    private List<Contract> contract;
 
 
     public Customer() {
@@ -123,5 +127,13 @@ public class Customer {
 
     public void setCustomerStatus(int customerStatus) {
         this.customerStatus = customerStatus;
+    }
+
+    public List<Contract> getContract() {
+        return contract;
+    }
+
+    public void setContract(List<Contract> contract) {
+        this.contract = contract;
     }
 }

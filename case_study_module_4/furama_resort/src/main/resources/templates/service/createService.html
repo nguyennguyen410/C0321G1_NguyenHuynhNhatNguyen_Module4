@@ -41,10 +41,10 @@
 <div class="row">
     <div class="col-md-3">
         <button type="button" class="list-group-item list-group-item-action">
-            <a href="/createCustomer" style="color: darkblue">Create Customer</a>
+            <a href="/createService" style="color: darkblue">Create Service</a>
         </button>
         <button type="button" class="list-group-item list-group-item-action">
-            <a href="/customer" style="color: darkblue">List Customer</a>
+            <a href="/service" style="color: darkblue">List Service</a>
         </button>
     </div>
     <div class="col-md-9">
@@ -58,30 +58,40 @@
                         <th>Service Id:</th>
                         <td>
                             <input th:field="*{serviceId}" type="text" size="45"/>
+                            <div class="error" style="color: red" th:if="${#fields.hasErrors('serviceId')}"
+                                 th:errors="*{serviceId}"></div>
                         </td>
                     </tr>
                     <tr>
                         <th>Service Name:</th>
                         <td>
                             <input th:field="*{serviceName}" type="text" size="45"/>
+                            <div class="error" style="color: red" th:if="${#fields.hasErrors('serviceName')}"
+                                 th:errors="*{serviceName}"></div>
                         </td>
                     </tr>
                     <tr>
                         <th>Service Area:</th>
                         <td>
                             <input th:field="*{serviceArea}" type="text" size="45"/>
+                            <div class="error" style="color: red" th:if="${#fields.hasErrors('serviceArea')}"
+                                 th:errors="*{serviceArea}"></div>
                         </td>
                     </tr>
                     <tr>
                         <th>Service Cost:</th>
                         <td>
                             <input th:field="*{serviceCost}" type="text" size="45"/>
+                            <div class="error" style="color: red" th:if="${#fields.hasErrors('serviceCost')}"
+                                 th:errors="*{serviceCost}"></div>
                         </td>
                     </tr>
                     <tr>
                         <th>Service Max People:</th>
                         <td>
                             <input th:field="*{serviceMaxPeople}" type="text" size="45"/>
+                            <div class="error" style="color: red" th:if="${#fields.hasErrors('serviceMaxPeople')}"
+                                 th:errors="*{serviceMaxPeople}"></div>
                         </td>
                     </tr>
                     <tr>
@@ -107,6 +117,8 @@
                         <td>
                             <input th:field="*{standardRoom}" type="text" name="customerIdCard" id="customerIdCard"
                                    size="45"/>
+                            <div class="error" style="color: red" th:if="${#fields.hasErrors('standardRoom')}"
+                                 th:errors="*{standardRoom}"></div>
                         </td>
                     </tr>
                     <tr>
@@ -114,18 +126,23 @@
                         <td>
                             <input type="text" th:field="*{descriptionOtherConvenience}" name="customerPhone"
                                    id="customerPhone" size="45"/>
+                            <div class="error" style="color: red" th:if="${#fields.hasErrors('descriptionOtherConvenience')}"
+                                 th:errors="*{descriptionOtherConvenience}"></div>
                         </td>
                     </tr>
                     <tr>
                         <th>Pool Area:</th>
                         <td>
                             <input th:field="*{poolArea}" type="text" size="45"/>
-
+                            <div class="error" style="color: red" th:if="${#fields.hasErrors('poolArea')}"
+                                 th:errors="*{poolArea}"></div>
                         </td>
                     </tr>
                         <th>Number Of Floor:</th>
                         <td>
                             <input th:field="*{numberOfFloor}" type="text" size="45"/>
+                            <div class="error" style="color: red" th:if="${#fields.hasErrors('numberOfFloor')}"
+                                 th:errors="*{numberOfFloor}"></div>
                         </td>
                     </tr>
                     <tr>

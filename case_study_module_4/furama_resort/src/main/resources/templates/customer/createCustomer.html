@@ -58,6 +58,8 @@
                         <th>Customer Id:</th>
                         <td>
                             <input th:field="*{customerId}" type="text" name="customerId" id="customerId" size="45"/>
+                            <div class="error" style="color: red" th:if="${#fields.hasErrors('customerId')}"
+                                 th:errors="*{customerId}"></div>
                         </td>
                     </tr>
                     <tr>
@@ -92,12 +94,16 @@
                         <th>Customer Id Card:</th>
                         <td>
                             <input th:field="*{customerIdCard}" type="text" name="customerIdCard" id="customerIdCard" size="45"/>
+                            <div class="error" style="color: red" th:if="${#fields.hasErrors('customerIdCard')}"
+                                 th:errors="*{customerIdCard}"></div>
                         </td>
                     </tr>
                     <tr>
                         <th>Customer Phone:</th>
                         <td>
                             <input  type="text" th:field="*{customerPhone}" name="customerPhone" id="customerPhone" size="45"/>
+                            <div class="error" style="color: red" th:if="${#fields.hasErrors('customerPhone')}"
+                                 th:errors="*{customerPhone}"></div>
                         </td>
                     </tr>
                     <tr>

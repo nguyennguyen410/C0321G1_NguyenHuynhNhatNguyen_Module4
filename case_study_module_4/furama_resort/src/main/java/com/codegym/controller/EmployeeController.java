@@ -2,6 +2,7 @@ package com.codegym.controller;
 
 import com.codegym.model.dto.CustomerDto;
 import com.codegym.model.dto.EmployeeDto;
+import com.codegym.model.dto.ServiceDto;
 import com.codegym.model.entity.*;
 import com.codegym.model.service.*;
 import org.springframework.beans.BeanUtils;
@@ -11,10 +12,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -53,7 +56,19 @@ public class EmployeeController {
     }
 
     @PostMapping("/saveEmployee")
-    public String saveEmployee(@ModelAttribute EmployeeDto employeeDto, RedirectAttributes redirect){
+    public String saveEmployee(@Valid @ModelAttribute EmployeeDto employeeDto, BindingResult bindingResult,
+                               RedirectAttributes redirect, Model model){
+        new EmployeeDto().validate(employeeDto, bindingResult);
+        if(bindingResult.hasFieldErrors()){
+            model.addAttribute("employeeDto", employeeDto);
+            List<Position> positions = positionService.findAll();
+            List<EducationDegree> educationDegrees = educationDegreeService.findAll();
+            List<Division> divisions = divisionService.findAll();
+            model.addAttribute("position", positions);
+            model.addAttribute("educationDegree", educationDegrees);
+            model.addAttribute("division", divisions);
+            return "/employee/createEmployee";
+        }
         Employee employee = new Employee();
         BeanUtils.copyProperties(employeeDto, employee);
         employee.setUsername(userService.findByUsername(employeeDto.getUsername()).get());

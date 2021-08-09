@@ -13,11 +13,14 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -48,10 +51,22 @@ public class ServiceController {
     }
 
     @PostMapping("/saveService")
-    public String saveService(@ModelAttribute ServiceDto serviceDto){
-        Service service = new Service();
-        BeanUtils.copyProperties(serviceDto, service);
-        serviceService.save(service);
-        return "redirect:/service";
+    public String saveService(@Valid @ModelAttribute ServiceDto serviceDto, BindingResult bindingResult, Model model,
+                              RedirectAttributes redirect){
+        new ServiceDto().validate(serviceDto, bindingResult);
+        if(bindingResult.hasFieldErrors()){
+            model.addAttribute("serviceDto", serviceDto);
+            List<ServiceType> serviceTypes = serviceTypeService.findAll();
+            List<RentType> rentTypes = rentTypeService.findAll();
+            model.addAttribute("serviceTypeList", serviceTypes);
+            model.addAttribute("rentTypeList", rentTypes);
+            return "/service/createService";
+        }else {
+            Service service = new Service();
+            BeanUtils.copyProperties(serviceDto, service);
+            serviceService.save(service);
+            return "redirect:/service";
+        }
+
     }
 }

@@ -1,5 +1,6 @@
 package com.codegym.model.repository;
 
+import com.codegym.model.entity.Contract;
 import com.codegym.model.entity.Customer;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

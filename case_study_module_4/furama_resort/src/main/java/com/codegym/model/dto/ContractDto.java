@@ -1,23 +1,32 @@
 package com.codegym.model.dto;
 
+import com.codegym.model.entity.Customer;
+import com.codegym.model.entity.Employee;
+import com.codegym.model.entity.Service;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 public class ContractDto {
-    private int contractId;
+    private String contractId;
     private String contractStartDate;
     private String contractEndDate;
     private double contractDeposit;
     private double contractTotalMoney;
-    private int employeeId;
-    private String customerId;
-    private String serviceId;
+    private Employee employee;
+    private Customer customer;
+    private Service service;
 
     public ContractDto() {
     }
 
-    public int getContractId() {
+    public String getContractId() {
         return contractId;
     }
 
-    public void setContractId(int contractId) {
+    public void setContractId(String contractId) {
         this.contractId = contractId;
     }
 
@@ -53,27 +62,27 @@ public class ContractDto {
         this.contractTotalMoney = contractTotalMoney;
     }
 
-    public int getEmployeeId() {
-        return employeeId;
+    public Employee getEmployee() {
+        return employee;
     }
 
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
-    public String getCustomerId() {
-        return customerId;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
-    public String getServiceId() {
-        return serviceId;
+    public Service getService() {
+        return service;
     }
 
-    public void setServiceId(String serviceId) {
-        this.serviceId = serviceId;
+    public void setService(Service service) {
+        this.service = service;
     }
 }

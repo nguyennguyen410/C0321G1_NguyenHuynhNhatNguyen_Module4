@@ -1,9 +1,11 @@
 package com.codegym.controller;
 
+import com.codegym.model.entity.Contract;
 import com.codegym.model.entity.Customer;
 import com.codegym.model.dto.CustomerDto;
 import com.codegym.model.entity.CustomerType;
 import com.codegym.model.entity.Gender;
+import com.codegym.model.service.ContractService;
 import com.codegym.model.service.CustomerService;
 import com.codegym.model.service.CustomerTypeService;
 import com.codegym.model.service.GenderService;
@@ -14,10 +16,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,6 +35,9 @@ public class CustomerController {
 
     @Autowired
     GenderService genderService;
+
+    @Autowired
+    ContractService contractService;
 
 
     @GetMapping("/")
@@ -57,13 +64,25 @@ public class CustomerController {
     }
 
     @PostMapping("/saveCustomer")
-    public String saveCustomer(@ModelAttribute CustomerDto customerDto, RedirectAttributes redirect){
-        Customer customer = new Customer();
-        BeanUtils.copyProperties(customerDto, customer);
-        customer.setCustomerStatus(0);
-        customerService.save(customer);
-        redirect.addFlashAttribute("success", "Create customer successfully!");
-        return "redirect:/customer";
+    public String saveCustomer(@Valid @ModelAttribute CustomerDto customerDto, BindingResult bindingResult, Model model,
+                               RedirectAttributes redirect){
+        new CustomerDto().validate(customerDto, bindingResult);
+        if(bindingResult.hasFieldErrors()){
+            model.addAttribute("customerDto", customerDto);
+            List<CustomerType> customerType = customerTypeService.findAll();
+            List<Gender> genders = genderService.findAll();
+            model.addAttribute("customerTypeList", customerType);
+            model.addAttribute("gender", genders);
+            return "/customer/createCustomer";
+        } else {
+            Customer customer = new Customer();
+            BeanUtils.copyProperties(customerDto, customer);
+            customer.setCustomerStatus(0);
+            customerService.save(customer);
+            redirect.addFlashAttribute("success", "Create customer successfully!");
+            return "redirect:/customer";
+        }
+
     }
 
     @GetMapping("/editCustomer/{customerId}")
@@ -95,4 +114,12 @@ public class CustomerController {
         return modelAndView;
     }
 
+    @GetMapping("/customerUsingService")
+    public ModelAndView usingServiceCustomer(@PageableDefault(value = 2) Pageable pageable){
+        Page<Contract> contracts = contractService.findAllByContractStartDate(pageable);
+        ModelAndView modelAndView = null;
+        modelAndView = new ModelAndView("/customer/usingServiceCustomer");
+        modelAndView.addObject("contracts", contracts);
+        return modelAndView;
+    }
 }

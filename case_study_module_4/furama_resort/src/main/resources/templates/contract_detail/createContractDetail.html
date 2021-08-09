@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="/layout :: logo"></div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/employee">Employee <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/customer">Customer <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/service">Service <span
+                        class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/contract">Contract <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+<div class="row">
+    <div class="col-md-3">
+        <button type="button" class="list-group-item list-group-item-action">
+            <a href="/createContractDetail" style="color: darkblue">Create Contract Detail</a>
+        </button>
+        <button type="button" class="list-group-item list-group-item-action">
+            <a href="/contractDetail" style="color: darkblue">List Contract Detail</a>
+        </button>
+    </div>
+    <div class="col-md-9">
+        <div align="center">
+            <form class="form font-weight-normal" method="post" th:action="@{/saveContractDetail}"
+                  th:object="${contractDetailDto}">
+                <table class="table" cellpadding="5">
+                    <caption>
+                        <h2>Add New Contract Detail</h2>
+                    </caption>
+                    <tr>
+                        <th>Contract Detail Id:</th>
+                        <td>
+                            <input type="text" th:field="*{contractDetailId}" size="45"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Contract:</th>
+                        <td>
+                            <select id="contract" style="width: 100px" th:field="*{contract}">
+                                <option th:each="c : ${contractList}" th:value="${c.contractId}"
+                                        th:text="${c.contractId}">
+                                </option>
+
+                            </select>
+                            <label style="color: greenyellow" id="contractCost"></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Attach Service:</th>
+                        <td>
+                            <select id="attachService" style="width: 100px" th:field="*{attachService}">
+                                <option th:each="c : ${attachServiceList}" th:value="${c.attachServiceId}"
+                                        th:text="${c.attachServiceName}">
+                                    <input id="valueAttachService" type="hidden" th:value="${c.attachServiceCost}">
+                                </option>
+                            </select>
+                            <label style="color: greenyellow" id="attachServiceCost"></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Quantity:</th>
+                        <td>
+                            <input id="quantity" type="text" th:field="*{quantity}" size="45"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Total Money:</th>
+                        <td>
+                            <input id="totalMoney" type="text" th:field="*{totalMoney}" size="45" readonly/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                            <input class="btn btn-success" type="submit" value="Save"/>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div th:insert="/layout :: footer"></div>
+</body>
+<div th:insert="/layout :: script"></div>
+<script>
+    $(document).ready(function () {
+        let value1;
+        let value2;
+        $('#contract').click(function () {
+            let cost = $("#contract").val();
+            /*document.getElementById("contractCost").innerText = cost;*/
+            $.ajax({
+                url: "http://localhost:8080/contractId/" + cost,
+                type: "GET",
+                dataType: "JSON",
+                success: function (data) {
+                    value1 = data.contractTotalMoney;
+
+                    document.getElementById("contractCost").innerText = "Contract Total Money: " + value1 + "$";
+                }
+            })
+        })
+
+        $('#attachService').click(function () {
+            let cost = $("#attachService").val();
+            $.ajax({
+                url: "http://localhost:8080/attachServiceId/" + cost,
+                type: "GET",
+                dataType: "JSON",
+                success: function (data) {
+                    value2 = data.attachServiceCost;
+                    document.getElementById("attachServiceCost").innerText = "Attach Service Cost: " + value2 + "$";
+                }
+            })
+        })
+
+        $('#totalMoney').click(function () {
+            let quantity = $("#quantity").val();
+            document.getElementById("totalMoney").value = value2 * parseInt(quantity) + value1;
+        })
+
+    });
+
+</script>
+</html>

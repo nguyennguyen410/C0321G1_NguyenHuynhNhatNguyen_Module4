@@ -1,6 +1,7 @@
 package com.codegym.model.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Employee {
@@ -31,6 +32,9 @@ public class Employee {
     @JoinColumn(name = "username_id", referencedColumnName = "id")
     private User username;
     private int employeeStatus;
+
+    @OneToMany(mappedBy = "employee")
+    private List<Contract> contract;
 
     public Employee() {
     }

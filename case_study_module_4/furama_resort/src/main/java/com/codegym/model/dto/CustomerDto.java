@@ -2,8 +2,11 @@ package com.codegym.model.dto;
 
 import com.codegym.model.entity.CustomerType;
 import com.codegym.model.entity.Gender;
+import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
+import org.springframework.validation.Validator;
 
-public class CustomerDto {
+public class CustomerDto implements Validator {
     private String customerId;
     private CustomerType customerType;
     private String customerName;
@@ -101,5 +104,38 @@ public class CustomerDto {
 
     public void setCustomerAddress(String customerAddress) {
         this.customerAddress = customerAddress;
+    }
+
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return false;
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+        CustomerDto customerDto = (CustomerDto) target;
+        String customerId = customerDto.getCustomerId();
+        String customerPhone = customerDto.getCustomerPhone();
+        String customerIdCard = customerDto.getCustomerIdCard();
+        String customerEmail = customerDto.getCustomerEmail();
+        ValidationUtils.rejectIfEmpty(errors, "customerId", "customerId.empty");
+        if (!customerId.matches("(^[K][H][-]([0-9]{4})$)")){
+            errors.rejectValue("customerId", "customerId.matches");
+        }
+
+        ValidationUtils.rejectIfEmpty(errors, "customerPhone", "customerPhone.empty");
+        if (!customerPhone.matches("(^\\([0-9]{2}\\)-[0-9]{9}$)")){
+            errors.rejectValue("customerPhone", "customerPhone.matches");
+        }
+
+        ValidationUtils.rejectIfEmpty(errors, "customerIdCard", "customerIdCard.empty");
+        if (!customerIdCard.matches("(^[0-9]{9}$)")){
+            errors.rejectValue("customerIdCard", "customerIdCard.matches");
+        }
+
+        ValidationUtils.rejectIfEmpty(errors, "customerEmail", "customerEmail.empty");
+        if (!customerEmail.matches("(^[a-z][a-zA-Z0-9\\.\\_]*+\\@[a-z0-9A-Z]+(\\.[a-z]{2,})+$)")){
+            errors.rejectValue("customerEmail", "customerEmail.matches");
+        }
     }
 }
