@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="/layout :: head">
     <meta charset="UTF-8">
     <title>Title</title>
@@ -70,8 +71,8 @@
                     <th>Customer Phone</th>
                     <th>Customer Email</th>
                     <th>Customer Address</th>
-                    <th>edit</th>
-                    <th>delete</th>
+                    <th sec:authorize="hasRole('ADMIN')">edit</th>
+                    <th sec:authorize="hasRole('ADMIN')">delete</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -87,10 +88,10 @@
                         <td th:text="${customer.customerPhone}"></td>
                         <td th:text="${customer.customerEmail}"></td>
                         <td th:text="${customer.customerAddress}"></td>
-                        <td>
+                        <td sec:authorize="hasRole('ADMIN')">
                             <a class="btn btn-warning" th:href="@{/editCustomer/__${customer.customerId}__}">Edit</a>
                         </td>
-                        <td>
+                        <td sec:authorize="hasRole('ADMIN')">
                             <button type="button" class="deleteButton btn btn-danger" data-toggle="modal"
                                     data-target="#deleteModal">
                                 Delete

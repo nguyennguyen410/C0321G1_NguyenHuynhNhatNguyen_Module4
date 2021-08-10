@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="head">
     <meta charset="UTF-8">
     <title>FURAMA RESORT</title>
@@ -9,7 +10,12 @@
 <body>
 <div class="container-fluid header col-md-12" id="header" style="align-items: center" th:fragment="logo">
     <img src="/Images/logo.png">
+    <div style="float: right" sec:authorize="isAuthenticated()" class="col-sm-3 text-right align-self-center">
+        <span style="color: #007bff" sec:authentication="name">/</span>
+        <a class="ml-2" href="/logout">Logout</a>
+    </div>
 </div>
+
 
 <div th:fragment="footer">
 <div class="footer" id="footer">

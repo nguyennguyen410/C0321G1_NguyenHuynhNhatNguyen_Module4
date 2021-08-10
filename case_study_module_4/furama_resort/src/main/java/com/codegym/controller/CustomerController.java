@@ -40,7 +40,7 @@ public class CustomerController {
     ContractService contractService;
 
 
-    @GetMapping({"/", "home"})
+    @GetMapping({"/", "/home"})
     public String showIndex(){
         return "index";
     }
