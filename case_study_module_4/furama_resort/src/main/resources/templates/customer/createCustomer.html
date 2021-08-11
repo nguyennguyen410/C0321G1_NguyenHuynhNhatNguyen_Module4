@@ -74,6 +74,8 @@
                         <th>Customer Name:</th>
                         <td>
                             <input th:field="*{customerName}" type="text" name="customerName" id="customerName" size="45"/>
+                            <div class="error" style="color: red" th:if="${#fields.hasErrors('customerName')}"
+                                 th:errors="*{customerName}"></div>
                         </td>
                     </tr>
                     <tr>
@@ -110,6 +112,8 @@
                         <th>Customer Email:</th>
                         <td>
                             <input th:field="*{customerEmail}" type="text" name="customerEmail" id="customerEmail" size="45"/>
+                            <div class="error" style="color: red" th:if="${#fields.hasErrors('customerEmail')}"
+                                 th:errors="*{customerEmail}"></div>
 
                         </td>
                     </tr>
@@ -117,6 +121,8 @@
                         <th>Customer Address:</th>
                         <td>
                             <input th:field="*{customerAddress}" type="text" name="customerAddress" id="customerAddress" size="45"/>
+                            <div class="error" style="color: red" th:if="${#fields.hasErrors('customerAddress')}"
+                                 th:errors="*{customerAddress}"></div>
                         </td>
                     </tr>
                     <tr>

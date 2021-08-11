@@ -51,22 +51,21 @@
         <div align="center">
             <form class="form font-weight-normal" method="post" th:action="@{/saveContractDetail}"
                   th:object="${contractDetailDto}">
-                <table class="table" cellpadding="5">
+                <table class="table">
                     <caption>
                         <h2>Add New Contract Detail</h2>
                     </caption>
                     <tr>
-                        <th>Contract Detail Id:</th>
                         <td>
-                            <input type="text" th:field="*{contractDetailId}" size="45"/>
+                            <input type="hidden" th:field="*{contractDetailId}" size="45"/>
                         </td>
                     </tr>
                     <tr>
                         <th>Contract:</th>
                         <td>
-                            <select id="contract" style="width: 100px" th:field="*{contract}">
+                            <select id="contract" style="width: 300px" th:field="*{contract}">
                                 <option th:each="c : ${contractList}" th:value="${c.contractId}"
-                                        th:text="${c.contractId}">
+                                        th:text="${c.contractId} +' '+${c.customer.customerName}">
                                 </option>
 
                             </select>
@@ -76,7 +75,7 @@
                     <tr>
                         <th>Attach Service:</th>
                         <td>
-                            <select id="attachService" style="width: 100px" th:field="*{attachService}">
+                            <select id="attachService" style="width: 300px" th:field="*{attachService}">
                                 <option th:each="c : ${attachServiceList}" th:value="${c.attachServiceId}"
                                         th:text="${c.attachServiceName}">
                                     <input id="valueAttachService" type="hidden" th:value="${c.attachServiceCost}">
@@ -115,6 +114,7 @@
     $(document).ready(function () {
         let value1;
         let value2;
+        let value3;
         $('#contract').click(function () {
             let cost = $("#contract").val();
             /*document.getElementById("contractCost").innerText = cost;*/
@@ -126,6 +126,7 @@
                     value1 = data.contractTotalMoney;
 
                     document.getElementById("contractCost").innerText = "Contract Total Money: " + value1 + "$";
+
                 }
             })
         })

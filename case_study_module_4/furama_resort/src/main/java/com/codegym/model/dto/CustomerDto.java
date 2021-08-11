@@ -6,15 +6,22 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
+import javax.validation.constraints.NotEmpty;
+
 public class CustomerDto implements Validator {
     private String customerId;
     private CustomerType customerType;
+
+    @NotEmpty(message = "Input please!!!")
     private String customerName;
+
     private String customerBirthday;
     private Gender customerGender;
     private String customerIdCard;
     private String customerPhone;
     private String customerEmail;
+
+    @NotEmpty(message = "Input please!!!")
     private String customerAddress;
 
     public CustomerDto() {

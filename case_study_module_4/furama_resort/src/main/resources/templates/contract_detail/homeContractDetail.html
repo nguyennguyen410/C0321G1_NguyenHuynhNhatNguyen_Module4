@@ -53,8 +53,7 @@
     <div class="col-md-9">
         <div align="center">
             <caption><h2>List of Contract Detail</h2></caption>
-            <table id="tableCustomer" class="table table-striped table-bordered w-100 d-inline-block"
-                   style="overflow-x: scroll">
+            <table  id="tableCustomer" class="table table-striped table-bordered w-100">
                 <thead>
                 <tr>
                     <th>No</th>
@@ -62,6 +61,7 @@
                     <th>Contract</th>
                     <th>Attach Service</th>
                     <th>Quantity</th>
+                    <th>Total Money</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -72,6 +72,7 @@
                         <td th:text="${contractDetail.contract.contractId}"></td>
                         <td th:text="${contractDetail.attachService.attachServiceName}"></td>
                         <td th:text="${contractDetail.quantity}"></td>
+                        <td th:text="${contractDetail.totalMoney}"></td>
 
                         <!--<td>
                             <a class="btn btn-warning" th:href="@{/editEmployee/__${employee.employeeId}__}">Edit</a>
