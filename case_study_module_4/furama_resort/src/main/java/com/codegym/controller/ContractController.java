@@ -9,6 +9,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -55,6 +56,7 @@ public class ContractController {
     public String saveEmployee(@ModelAttribute ContractDto contractDto, RedirectAttributes redirect){
         Contract contract = new Contract();
         BeanUtils.copyProperties(contractDto, contract);
+        contract.setContractTotalMoney(contractDto.getService().getServiceCost());
         contractService.save(contract);
         redirect.addFlashAttribute("success", "Create customer successfully!");
         return "redirect:/contract";

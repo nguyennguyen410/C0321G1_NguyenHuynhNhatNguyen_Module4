@@ -38,8 +38,8 @@
         </form>
     </div>
 </nav>
-<div class="row">
-    <div class="col-md-3">
+<div>
+    <!--<div class="col-md-3">
         <div class="list-group">
             <button type="button" class="list-group-item list-group-item-action">
                 <a href="/createContract" style="color: darkblue">Create Contract</a>
@@ -51,11 +51,17 @@
                 <a href="/contractDetail" style="color: darkblue">Contract Detail</a>
             </button>
         </div>
-    </div>
-    <div class="col-md-9">
+    </div>-->
+    <div class="col-md-12">
         <div align="center">
             <caption><h2>List of Contract</h2></caption>
-            <table id="tableCustomer" class="table table-striped table-bordered w-100 d-inline-block"
+            <div class="mb-2">
+                <a class="btn btn-primary d-inline-block mb-2" href="/createContract"
+                   style="color: lightcyan; float: left; margin-top: 10px">Create Contract</a>
+                <a class="btn btn-primary d-inline-block mb-2" href="/contractDetail"
+                   style="color: lightcyan; float: right; margin-top: 10px">Contract Detail</a>
+            </div>
+            <table id="tableCustomer" class="table table-striped table-bordered"
                    style="overflow-x: scroll">
                 <thead>
                 <tr>
@@ -63,9 +69,9 @@
                     <th>Contract ID</th>
                     <th>Contract Start Date</th>
                     <th>Contract End Date</th>
-                    <th>Contract Deposit</th>
+                    <!--<th>Contract Deposit</th>-->
                     <th>Contract Total Money</th>
-                    <th>Employee</th>
+                    <!--<th>Employee</th>-->
                     <th>Customer</th>
                     <th>Service</th>
 
@@ -78,9 +84,9 @@
                         <td th:text="${contract.contractId}"></td>
                         <td th:text="${contract.contractStartDate}"></td>
                         <td th:text="${contract.contractEndDate}"></td>
-                        <td th:text="${contract.contractDeposit}"></td>
+                        <!--<td th:text="${contract.contractDeposit}"></td>-->
                         <td th:text="${contract.contractTotalMoney}"></td>
-                        <td th:text="${contract.employee.employeeName}"></td>
+                        <!--<td th:text="${contract.employee.employeeName}"></td>-->
                         <td th:text="${contract.customer.customerName}"></td>
                         <td th:text="${contract.service.serviceName}"></td>
 

@@ -97,19 +97,21 @@ public class CustomerController {
     }
 
     @GetMapping("/deleteCustomer")
-    public String deleteCustomer(@RequestParam String customerIdDelete){
+    public String deleteCustomer(@RequestParam String customerIdDelete, Model model){
         Optional<Customer> customer = customerService.findById(customerIdDelete);
         customer.get().setCustomerStatus(1);
         customerService.save(customer.get());
+        model.addAttribute("success", "Delete customer successfully!");
         return "redirect:/customer";
     }
 
     @GetMapping("/search")
     public ModelAndView searchCustomer(@PageableDefault(value = 2) Pageable pageable,
                                  @RequestParam String searchName){
-        Page<Customer> customers = customerService.findAllByNameContaining(searchName, pageable);
+        /*Page<Customer> customers = customerService.findAllByNameContaining(searchName, pageable);*/
+        Page<Customer> customers = customerService.searchByNameOrId(searchName, pageable);
         ModelAndView modelAndView = null;
-        modelAndView = new ModelAndView("/customer/searchCustomer");
+        modelAndView = new ModelAndView("/customer/homeCustomer");
         modelAndView.addObject("customers", customers);
         return modelAndView;
     }

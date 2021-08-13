@@ -38,26 +38,27 @@
         </form>
     </div>
 </nav>
-<div class="row">
-    <div class="col-md-3">
+<div>
+    <!--<div class="col-md-3">
         <button type="button" class="list-group-item list-group-item-action">
             <a href="/createCustomer" style="color: darkblue">Create Customer</a>
         </button>
         <button type="button" class="list-group-item list-group-item-action">
             <a href="/customer" style="color: darkblue">List Customer</a>
         </button>
-    </div>
-    <div class="col-md-9">
+    </div>-->
+    <div class="col-md-12">
         <div align="center">
-            <form class="form font-weight-normal" method="post" th:action="@{/saveCustomer}" th:object="${customerDto}">
+            <caption>
+                <h2>Add New Customer</h2>
+            </caption>
+            <form class="form font-weight-normal w-50" method="post" th:action="@{/saveCustomer}" th:object="${customerDto}">
                 <table class="table" cellpadding="5">
-                    <caption>
-                        <h2>Add New Customer</h2>
-                    </caption>
+
                     <tr>
                         <th>Customer Id:</th>
                         <td>
-                            <input th:field="*{customerId}" type="text" name="customerId" id="customerId" size="45"/>
+                            <input class="form-control" th:field="*{customerId}" type="text" name="customerId" id="customerId" />
                             <div class="error" style="color: red" th:if="${#fields.hasErrors('customerId')}"
                                  th:errors="*{customerId}"></div>
                         </td>
@@ -65,7 +66,7 @@
                     <tr>
                         <th>Customer Type Id:</th>
                         <td>
-                        <select style="width: 100px" th:field="*{customerType}">
+                        <select class="form-control" style="width: 300px" th:field="*{customerType}">
                             <option th:each="c : ${customerTypeList}" th:value="${c.customerTypeId}" th:text="${c.customerTypeName}"></option>
                         </select>
                         </td>
@@ -73,7 +74,7 @@
                     <tr>
                         <th>Customer Name:</th>
                         <td>
-                            <input th:field="*{customerName}" type="text" name="customerName" id="customerName" size="45"/>
+                            <input class="form-control" th:field="*{customerName}" type="text" name="customerName" id="customerName" />
                             <div class="error" style="color: red" th:if="${#fields.hasErrors('customerName')}"
                                  th:errors="*{customerName}"></div>
                         </td>
@@ -81,13 +82,13 @@
                     <tr>
                         <th>Customer Birthday:</th>
                         <td>
-                            <input th:field="*{customerBirthday}" type="date" name="customerBirthday" id="customerBirthday" size="45"/>
+                            <input class="form-control" th:field="*{customerBirthday}" type="date" name="customerBirthday" id="customerBirthday" />
                         </td>
                     </tr>
                     <tr>
                         <th>Customer Gender:</th>
                         <td>
-                        <select style="width: 100px" th:field="*{customerGender}">
+                        <select class="form-control" style="width: 300px" th:field="*{customerGender}">
                             <option th:each="c : ${gender}" th:value="${c.genderId}" th:text="${c.genderName}"></option>
                         </select>
                         </td>
@@ -95,7 +96,7 @@
                     <tr>
                         <th>Customer Id Card:</th>
                         <td>
-                            <input th:field="*{customerIdCard}" type="text" name="customerIdCard" id="customerIdCard" size="45"/>
+                            <input class="form-control" th:field="*{customerIdCard}" type="text" name="customerIdCard" id="customerIdCard" />
                             <div class="error" style="color: red" th:if="${#fields.hasErrors('customerIdCard')}"
                                  th:errors="*{customerIdCard}"></div>
                         </td>
@@ -103,7 +104,7 @@
                     <tr>
                         <th>Customer Phone:</th>
                         <td>
-                            <input  type="text" th:field="*{customerPhone}" name="customerPhone" id="customerPhone" size="45"/>
+                            <input  class="form-control" type="text" th:field="*{customerPhone}" name="customerPhone" id="customerPhone" />
                             <div class="error" style="color: red" th:if="${#fields.hasErrors('customerPhone')}"
                                  th:errors="*{customerPhone}"></div>
                         </td>
@@ -111,7 +112,7 @@
                     <tr>
                         <th>Customer Email:</th>
                         <td>
-                            <input th:field="*{customerEmail}" type="text" name="customerEmail" id="customerEmail" size="45"/>
+                            <input class="form-control" th:field="*{customerEmail}" type="text" name="customerEmail" id="customerEmail" />
                             <div class="error" style="color: red" th:if="${#fields.hasErrors('customerEmail')}"
                                  th:errors="*{customerEmail}"></div>
 
@@ -120,13 +121,14 @@
                     <tr>
                         <th>Customer Address:</th>
                         <td>
-                            <input th:field="*{customerAddress}" type="text" name="customerAddress" id="customerAddress" size="45"/>
+                            <input class="form-control" th:field="*{customerAddress}" type="text" name="customerAddress" id="customerAddress" />
                             <div class="error" style="color: red" th:if="${#fields.hasErrors('customerAddress')}"
                                  th:errors="*{customerAddress}"></div>
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2" align="center">
+                        <td></td>
+                        <td colspan="2">
                             <input class="btn btn-success" type="submit" value="Save"/>
                         </td>
                     </tr>

@@ -38,18 +38,18 @@
         </form>
     </div>
 </nav>
-<div class="row">
-    <div class="col-md-3">
+<div>
+    <!--<div class="col-md-3">
         <button type="button" class="list-group-item list-group-item-action">
             <a href="/createService" style="color: darkblue">Create Service</a>
         </button>
         <button type="button" class="list-group-item list-group-item-action">
             <a href="/service" style="color: darkblue">List Service</a>
         </button>
-    </div>
-    <div class="col-md-9">
+    </div>-->
+    <div class="col-md-12">
         <div align="center">
-            <form class="form font-weight-normal" method="post" th:action="@{/saveService}" th:object="${serviceDto}">
+            <form class="form font-weight-normal w-50" method="post" th:action="@{/saveService}" th:object="${serviceDto}">
                 <table class="table" cellpadding="5">
                     <caption>
                         <h2>Add New Service</h2>
@@ -57,7 +57,7 @@
                     <tr>
                         <th>Service Id:</th>
                         <td>
-                            <input th:field="*{serviceId}" type="text" size="45"/>
+                            <input class="form-control" th:field="*{serviceId}" type="text"/>
                             <div class="error" style="color: red" th:if="${#fields.hasErrors('serviceId')}"
                                  th:errors="*{serviceId}"></div>
                         </td>
@@ -65,7 +65,7 @@
                     <tr>
                         <th>Service Name:</th>
                         <td>
-                            <input th:field="*{serviceName}" type="text" size="45"/>
+                            <input class="form-control" th:field="*{serviceName}" type="text"/>
                             <div class="error" style="color: red" th:if="${#fields.hasErrors('serviceName')}"
                                  th:errors="*{serviceName}"></div>
                         </td>
@@ -73,7 +73,7 @@
                     <tr>
                         <th>Service Area:</th>
                         <td>
-                            <input th:field="*{serviceArea}" type="text" size="45"/>
+                            <input class="form-control" th:field="*{serviceArea}" type="text"/>
                             <div class="error" style="color: red" th:if="${#fields.hasErrors('serviceArea')}"
                                  th:errors="*{serviceArea}"></div>
                         </td>
@@ -81,7 +81,7 @@
                     <tr>
                         <th>Service Cost:</th>
                         <td>
-                            <input th:field="*{serviceCost}" type="text" size="45"/>
+                            <input class="form-control" th:field="*{serviceCost}" type="text"/>
                             <div class="error" style="color: red" th:if="${#fields.hasErrors('serviceCost')}"
                                  th:errors="*{serviceCost}"></div>
                         </td>
@@ -89,7 +89,7 @@
                     <tr>
                         <th>Service Max People:</th>
                         <td>
-                            <input th:field="*{serviceMaxPeople}" type="text" size="45"/>
+                            <input class="form-control" th:field="*{serviceMaxPeople}" type="text"/>
                             <div class="error" style="color: red" th:if="${#fields.hasErrors('serviceMaxPeople')}"
                                  th:errors="*{serviceMaxPeople}"></div>
                         </td>
@@ -97,7 +97,7 @@
                     <tr>
                         <th>Rent Type:</th>
                         <td>
-                            <select style="width: 100px" th:field="*{rentType}">
+                            <select class="form-control" style="width: 300px" th:field="*{rentType}">
                                 <option th:each="c : ${rentTypeList}" th:value="${c.rentTypeId}"
                                         th:text="${c.rentTypeName}"></option>
                             </select>
@@ -106,7 +106,7 @@
                     <tr>
                         <th>Service Type:</th>
                         <td>
-                            <select style="width: 100px" th:field="*{serviceType}">
+                            <select class="form-control" style="width: 300px" th:field="*{serviceType}">
                                 <option th:each="c : ${serviceTypeList}" th:value="${c.serviceTypeId}"
                                         th:text="${c.serviceTypeName}"></option>
                             </select>
@@ -115,8 +115,8 @@
                     <tr>
                         <th>Standard Room:</th>
                         <td>
-                            <input th:field="*{standardRoom}" type="text" name="customerIdCard" id="customerIdCard"
-                                   size="45"/>
+                            <input class="form-control" th:field="*{standardRoom}" type="text" name="customerIdCard" id="customerIdCard"
+                                   />
                             <div class="error" style="color: red" th:if="${#fields.hasErrors('standardRoom')}"
                                  th:errors="*{standardRoom}"></div>
                         </td>
@@ -124,8 +124,8 @@
                     <tr>
                         <th>Description Other Convenience:</th>
                         <td>
-                            <input type="text" th:field="*{descriptionOtherConvenience}" name="customerPhone"
-                                   id="customerPhone" size="45"/>
+                            <input class="form-control" type="text" th:field="*{descriptionOtherConvenience}" name="customerPhone"
+                                   id="customerPhone"/>
                             <div class="error" style="color: red" th:if="${#fields.hasErrors('descriptionOtherConvenience')}"
                                  th:errors="*{descriptionOtherConvenience}"></div>
                         </td>
@@ -133,20 +133,21 @@
                     <tr>
                         <th>Pool Area:</th>
                         <td>
-                            <input th:field="*{poolArea}" type="text" size="45"/>
+                            <input class="form-control" th:field="*{poolArea}" type="text"/>
                             <div class="error" style="color: red" th:if="${#fields.hasErrors('poolArea')}"
                                  th:errors="*{poolArea}"></div>
                         </td>
                     </tr>
                         <th>Number Of Floor:</th>
                         <td>
-                            <input th:field="*{numberOfFloor}" type="text" size="45"/>
+                            <input class="form-control" th:field="*{numberOfFloor}" type="text" size="45"/>
                             <div class="error" style="color: red" th:if="${#fields.hasErrors('numberOfFloor')}"
                                  th:errors="*{numberOfFloor}"></div>
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2" align="center">
+                        <td></td>
+                        <td colspan="2">
                             <input class="btn btn-success" type="submit" value="Save"/>
                         </td>
                     </tr>

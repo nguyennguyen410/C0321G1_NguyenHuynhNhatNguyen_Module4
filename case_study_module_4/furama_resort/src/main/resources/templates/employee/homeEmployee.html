@@ -39,8 +39,8 @@
         </form>
     </div>
 </nav>
-<div class="row">
-    <div class="col-md-3">
+<div>
+    <!--<div class="col-md-3">
         <div class="list-group">
             <button type="button" class="list-group-item list-group-item-action">
                 <a href="/createEmployee" style="color: darkblue">Create Employee</a>
@@ -49,11 +49,15 @@
                 <a href="/employee" style="color: darkblue">List Employee</a>
             </button>
         </div>
-    </div>
-    <div class="col-md-9">
+    </div>-->
+    <div class="col-md-12">
         <div align="center">
             <caption><h2>List of Employee</h2></caption>
-            <table id="tableCustomer" class="table table-striped table-bordered w-100 d-inline-block"
+            <div class="mb-2">
+                <a class="btn btn-primary d-inline-block mb-2" href="/createEmployee"
+                   style="color: lightcyan; float: left; margin-top: 10px">Create Employee</a>
+            </div>
+            <table id="tableCustomer" class="table table-striped table-bordered w-100"
                    style="overflow-x: scroll">
                 <thead>
                 <tr>
@@ -62,16 +66,16 @@
                     <th>Employee Name</th>
                     <th>Employee Birthday</th>
                     <th>Employee ID Card</th>
-                    <th>Employee Salary</th>
+                    <!--<th>Employee Salary</th>
                     <th>Employee Phone</th>
-                    <th>Employee Email</th>
+                    <th>Employee Email</th>-->
                     <th>Employee Address</th>
                     <th>Employee Position</th>
-                    <th>Employee EducationDegree</th>
+                    <!--<th>Employee EducationDegree</th>-->
                     <th>Employee Division</th>
-                    <th>Employee Username</th>
-                    <th sec:authorize="hasRole('ADMIN')">edit</th>
-                    <th sec:authorize="hasRole('ADMIN')">delete</th>
+                    <!--<th>Employee Username</th>-->
+                    <th sec:authorize="hasRole('ADMIN')" colspan="2" style="text-align: center">Action</th>
+                    <!--<th sec:authorize="hasRole('ADMIN')">delete</th>-->
                 </tr>
                 </thead>
                 <tbody>
@@ -82,14 +86,14 @@
                         <td th:text="${employee.employeeName}"></td>
                         <td th:text="${employee.employeeBirthday}"></td>
                         <td th:text="${employee.employeeIdCard}"></td>
-                        <td th:text="${employee.employeeSalary}"></td>
+                        <!--<td th:text="${employee.employeeSalary}"></td>
                         <td th:text="${employee.employeePhone}"></td>
-                        <td th:text="${employee.employeeEmail}"></td>
+                        <td th:text="${employee.employeeEmail}"></td>-->
                         <td th:text="${employee.employeeAddress}"></td>
                         <td th:text="${employee.position.positionName}"></td>
-                        <td th:text="${employee.educationDegree.educationDegreeName}"></td>
+                        <!--<td th:text="${employee.educationDegree.educationDegreeName}"></td>-->
                         <td th:text="${employee.division.divisionName}"></td>
-                        <td th:text="${employee.username.username}"></td>
+                        <!--<td th:text="${employee.username.username}"></td>-->
                         <td sec:authorize="hasRole('ADMIN')">
                             <a class="btn btn-warning" th:href="@{/editEmployee/__${employee.employeeId}__}">Edit</a>
                         </td>

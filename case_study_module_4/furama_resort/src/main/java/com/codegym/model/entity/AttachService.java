@@ -2,6 +2,7 @@ package com.codegym.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -17,7 +18,7 @@ public class AttachService {
     private String attachServiceStatus;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "attachService")
+    @OneToMany(mappedBy = "attachService", cascade = CascadeType.ALL)
     private List<ContractDetail> contractDetails;
 
     public AttachService() {

@@ -20,5 +20,7 @@ public interface CustomerService {
 
     Page<Customer> findAllByNameContaining(String customerName, Pageable pageable);
 
+    Page<Customer> searchByNameOrId(String customerNameOrId, Pageable pageable);
+
     Page<Customer> findAllByCustomerType_CustomerTypeId(int customerTypeId, Pageable pageable);
 }

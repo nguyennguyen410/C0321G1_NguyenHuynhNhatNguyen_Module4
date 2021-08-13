@@ -6,13 +6,13 @@ import javax.persistence.*;
 public class ContractDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String contractDetailId;
+    private int contractDetailId;
 
     @ManyToOne(targetEntity = Contract.class)
     @JoinColumn(name = "contract_detail_contract", referencedColumnName = "contractId")
     private Contract contract;
 
-    @ManyToOne(targetEntity = AttachService.class)
+    @ManyToOne(targetEntity = AttachService.class,cascade = CascadeType.ALL)
     @JoinColumn(name = "attach_service_contract", referencedColumnName = "attachServiceId")
     private AttachService attachService;
 
@@ -23,11 +23,11 @@ public class ContractDetail {
     public ContractDetail() {
     }
 
-    public String getContractDetailId() {
+    public int getContractDetailId() {
         return contractDetailId;
     }
 
-    public void setContractDetailId(String contractDetailId) {
+    public void setContractDetailId(int contractDetailId) {
         this.contractDetailId = contractDetailId;
     }
 

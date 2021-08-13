@@ -38,18 +38,18 @@
         </form>
     </div>
 </nav>
-<div class="row">
-    <div class="col-md-3">
+<div>
+    <!--<div class="col-md-3">
         <button type="button" class="list-group-item list-group-item-action">
             <a href="/createContractDetail" style="color: darkblue">Create Contract Detail</a>
         </button>
         <button type="button" class="list-group-item list-group-item-action">
             <a href="/contractDetail" style="color: darkblue">List Contract Detail</a>
         </button>
-    </div>
-    <div class="col-md-9">
+    </div>-->
+    <div class="col-md-12">
         <div align="center">
-            <form class="form font-weight-normal" method="post" th:action="@{/saveContractDetail}"
+            <form class="form font-weight-normal w-50" method="post" th:action="@{/saveContractDetail}"
                   th:object="${contractDetailDto}">
                 <table class="table">
                     <caption>
@@ -57,13 +57,13 @@
                     </caption>
                     <tr>
                         <td>
-                            <input type="hidden" th:field="*{contractDetailId}" size="45"/>
+                            <input class="form-control" type="hidden" th:field="*{contractDetailId}" />
                         </td>
                     </tr>
                     <tr>
                         <th>Contract:</th>
                         <td>
-                            <select id="contract" style="width: 300px" th:field="*{contract}">
+                            <select class="form-control" id="contract" style="width: 300px" th:field="*{contract}">
                                 <option th:each="c : ${contractList}" th:value="${c.contractId}"
                                         th:text="${c.contractId} +' '+${c.customer.customerName}">
                                 </option>
@@ -75,7 +75,7 @@
                     <tr>
                         <th>Attach Service:</th>
                         <td>
-                            <select id="attachService" style="width: 300px" th:field="*{attachService}">
+                            <select class="form-control" id="attachService" style="width: 300px" th:field="*{attachService}">
                                 <option th:each="c : ${attachServiceList}" th:value="${c.attachServiceId}"
                                         th:text="${c.attachServiceName}">
                                     <input id="valueAttachService" type="hidden" th:value="${c.attachServiceCost}">
@@ -87,17 +87,18 @@
                     <tr>
                         <th>Quantity:</th>
                         <td>
-                            <input id="quantity" type="text" th:field="*{quantity}" size="45"/>
+                            <input class="form-control" id="quantity" type="text" th:field="*{quantity}" />
                         </td>
                     </tr>
                     <tr>
                         <th>Total Money:</th>
                         <td>
-                            <input id="totalMoney" type="text" th:field="*{totalMoney}" size="45" readonly/>
+                            <input class="form-control" id="totalMoney" type="text" th:field="*{totalMoney}" readonly/>
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2" align="center">
+                        <td></td>
+                        <td colspan="2">
                             <input class="btn btn-success" type="submit" value="Save"/>
                         </td>
                     </tr>

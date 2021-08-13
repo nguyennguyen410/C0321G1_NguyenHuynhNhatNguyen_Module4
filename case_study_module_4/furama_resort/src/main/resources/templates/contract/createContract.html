@@ -38,18 +38,18 @@
         </form>
     </div>
 </nav>
-<div class="row">
-    <div class="col-md-3">
+<div>
+    <!--<div class="col-md-3">
         <button type="button" class="list-group-item list-group-item-action">
             <a href="/createContract" style="color: darkblue">Create Contract</a>
         </button>
         <button type="button" class="list-group-item list-group-item-action">
             <a href="/contract" style="color: darkblue">List Contract</a>
         </button>
-    </div>
-    <div class="col-md-9">
+    </div>-->
+    <div class="col-md-12">
         <div align="center">
-            <form class="form font-weight-normal" method="post" th:action="@{/saveContract}" th:object="${contractDto}">
+            <form class="form font-weight-normal w-50" method="post" th:action="@{/saveContract}" th:object="${contractDto}">
                 <table class="table" cellpadding="5">
                     <caption>
                         <h2>Add New Contract</h2>
@@ -57,37 +57,37 @@
                     <tr>
                         <th>Contract Id:</th>
                         <td>
-                            <input type="text" th:field="*{contractId}" name="contractId" id="contractId" size="45"/>
+                            <input class="form-control" type="text" th:field="*{contractId}" name="contractId" id="contractId" />
                         </td>
                     </tr>
                     <tr>
                         <th>Contract Start Date:</th>
                         <td>
-                            <input type="date" th:field="*{contractStartDate}" name="contractStartDate" id="contractStartDate" size="45"/>
+                            <input class="form-control" type="date" th:field="*{contractStartDate}" name="contractStartDate" id="contractStartDate" />
                         </td>
                     </tr>
                     <tr>
                         <th>Contract End Date:</th>
                         <td>
-                            <input type="date" th:field="*{contractEndDate}" name="contractEndDate" id="contractEndDate" size="45"/>
+                            <input class="form-control" type="date" th:field="*{contractEndDate}" name="contractEndDate" id="contractEndDate" />
                         </td>
                     </tr>
                     <tr>
                         <th>Contract Deposit:</th>
                         <td>
-                            <input type="text" th:field="*{contractDeposit}" name="contractDeposit" id="contractDeposit" size="45"/>
+                            <input class="form-control" type="text" th:field="*{contractDeposit}" name="contractDeposit" id="contractDeposit" />
                         </td>
                     </tr>
-                    <tr>
+                    <!--<tr>
                         <th>Contract Total Money:</th>
                         <td>
-                            <input type="text" th:field="*{contractTotalMoney}" name="contractTotalMoney" id="contractTotalMoney" size="45"/>
+                            <input class="form-control" type="text" th:field="*{contractTotalMoney}" name="contractTotalMoney" id="contractTotalMoney" />
                         </td>
-                    </tr>
+                    </tr>-->
                     <tr>
                         <th>Employee:</th>
                         <td>
-                            <select style="width: 100px" th:field="*{employee}">
+                            <select class="form-control" style="width: 300px" th:field="*{employee}">
                                 <option th:each="c : ${employee}" th:value="${c.employeeId}"
                                         th:text="${c.employeeName}"></option>
                             </select>
@@ -96,7 +96,7 @@
                     <tr>
                         <th>Customer:</th>
                         <td>
-                            <select style="width: 100px" th:field="*{customer}">
+                            <select class="form-control" style="width: 300px" th:field="*{customer}">
                                 <option th:each="c : ${customerList}" th:value="${c.customerId}"
                                         th:text="${c.customerName}"></option>
                             </select>
@@ -105,14 +105,15 @@
                     <tr>
                         <th>Service:</th>
                         <td>
-                            <select style="width: 100px" th:field="*{service}">
+                            <select class="form-control" style="width: 300px" th:field="*{service}">
                                 <option th:each="c : ${serviceList}" th:value="${c.serviceId}"
                                         th:text="${c.serviceName}"></option>
                             </select>
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2" align="center">
+                        <td></td>
+                        <td colspan="2">
                             <input class="btn btn-success" type="submit" value="Save"/>
                         </td>
                     </tr>

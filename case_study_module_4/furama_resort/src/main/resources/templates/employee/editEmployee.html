@@ -38,18 +38,18 @@
         </form>
     </div>
 </nav>
-<div class="row">
-    <div class="col-md-3">
+<div >
+    <!--<div class="col-md-3">
         <button type="button" class="list-group-item list-group-item-action">
             <a href="/createEmployee" style="color: darkblue">Create Employee</a>
         </button>
         <button type="button" class="list-group-item list-group-item-action">
             <a href="/employee" style="color: darkblue">List Employee</a>
         </button>
-    </div>
-    <div class="col-md-9">
+    </div>-->
+    <div class="col-md-12">
         <div align="center">
-            <form th:action="@{/saveEmployee}" class="form font-weight-normal" method="post" th:object="${employeeDto}">
+            <form th:action="@{/saveEmployee}" class="form font-weight-normal w-50" method="post" th:object="${employeeDto}">
                 <table class="table" cellpadding="5">
                     <caption>
                         <h2>Add New Employee</h2>
@@ -57,55 +57,55 @@
                     <tr>
                         <th>Employee Id:</th>
                         <td>
-                            <input th:field="*{employeeId}" type="text" name="employeeId" id="employeeId" size="45"/>
+                            <input class="form-control" th:field="*{employeeId}" type="text" name="employeeId" id="employeeId" />
                         </td>
                     </tr>
                     <tr>
                         <th>Employee Name:</th>
                         <td>
-                            <input th:field="*{employeeName}"  type="text" name="employeeName" id="employeeName" size="45"/>
+                            <input class="form-control" th:field="*{employeeName}"  type="text" name="employeeName" id="employeeName" />
                         </td>
                     </tr>
                     <tr>
                         <th>Employee Birthday:</th>
                         <td>
-                            <input th:field="*{employeeBirthday}"  type="text" name="employeeBirthday" id="employeeBirthday" size="45"/>
+                            <input class="form-control" th:field="*{employeeBirthday}"  type="text" name="employeeBirthday" id="employeeBirthday" />
                         </td>
                     </tr>
                     <tr>
                         <th>Employee Id Card:</th>
                         <td>
-                            <input th:field="*{employeeIdCard}"  type="text" name="employeeIdCard" id="employeeIdCard" size="45"/>
+                            <input class="form-control" th:field="*{employeeIdCard}"  type="text" name="employeeIdCard" id="employeeIdCard" />
                         </td>
                     </tr>
                     <tr>
                         <th>Employee Salary:</th>
                         <td>
-                            <input th:field="*{employeeSalary}"  type="text" name="employeeSalary" id="employeeSalary" size="45"/>
+                            <input class="form-control" th:field="*{employeeSalary}"  type="text" name="employeeSalary" id="employeeSalary" />
                         </td>
                     </tr>
                     <tr>
                         <th>Employee Phone:</th>
                         <td>
-                            <input th:field="*{employeePhone}"  type="text" name="employeePhone" id="employeePhone" size="45"/>
+                            <input class="form-control" th:field="*{employeePhone}"  type="text" name="employeePhone" id="employeePhone" />
                         </td>
                     </tr>
                     <tr>
                         <th>Employee Email:</th>
                         <td>
-                            <input th:field="*{employeeEmail}"  type="text" name="employeeEmail" id="employeeEmail" size="45"/>
+                            <input class="form-control" th:field="*{employeeEmail}"  type="text" name="employeeEmail" id="employeeEmail" />
                         </td>
                     </tr>
                     <tr>
                         <th>Employee Address:</th>
                         <td>
-                            <input th:field="*{employeeAddress}"  type="text" name="employeeAddress" id="employeeAddress" size="45"/>
+                            <input class="form-control" th:field="*{employeeAddress}"  type="text" name="employeeAddress" id="employeeAddress" />
                         </td>
                     </tr>
                     <tr>
                         <th>Position:</th>
                         <td>
-                            <select style="width: 100px" th:field="*{position}">
+                            <select class="form-control" style="width: 300px" th:field="*{position}">
                                 <option th:each="c : ${position}" th:value="${c.positionId}" th:text="${c.positionName}"></option>
                             </select>
                         </td>
@@ -113,7 +113,7 @@
                     <tr>
                         <th>Education Degree:</th>
                         <td>
-                            <select style="width: 100px" th:field="*{educationDegree}">
+                            <select class="form-control" style="width: 300px" th:field="*{educationDegree}">
                                 <option th:each="c : ${educationDegree}" th:value="${c.educationDegreeId}" th:text="${c.educationDegreeName}"></option>
                             </select>
                         </td>
@@ -121,7 +121,7 @@
                     <tr>
                         <th>Division:</th>
                         <td>
-                            <select style="width: 100px" th:field="*{division}">
+                            <select class="form-control" style="width: 300px" th:field="*{division}">
                                 <option th:each="c : ${division}" th:value="${c.divisionId}" th:text="${c.divisionName}"></option>
                             </select>
                         </td>
@@ -129,11 +129,12 @@
                     <tr>
                         <th>Username:</th>
                         <td>
-                            <input th:field="*{username}" type="text" size="45"/>
+                            <input class="form-control" th:field="*{username}" type="text"/>
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2" align="center">
+                        <td></td>
+                        <td colspan="2">
                             <input class="btn btn-success" type="submit" value="Edit"/>
                         </td>
                     </tr>
